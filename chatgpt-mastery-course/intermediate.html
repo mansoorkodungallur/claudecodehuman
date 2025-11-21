@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intermediate: Prompt Craftsmanship - ChatGPT Mastery Course</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="main-nav" id="mainNav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h1>ChatGPT Mastery</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="beginner.html">Beginner</a></li>
+                <li><a href="intermediate.html" class="active">Intermediate</a></li>
+                <li><a href="expert.html" class="nav-locked">Expert</a></li>
+                <li><a href="playground.html">Playground</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                <span class="theme-icon">🌙</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Progress Bar -->
+    <div class="page-progress" id="pageProgress">
+        <div class="progress-fill" id="pageProgressFill"></div>
+    </div>
+
+    <!-- Hero -->
+    <section class="module-hero intermediate-hero">
+        <div class="container">
+            <div class="module-badge">Module 2</div>
+            <h1 class="module-title">Intermediate: Prompt Craftsmanship</h1>
+            <p class="module-subtitle">Master the art and science of prompt engineering. Learn frameworks and patterns used by professionals to get exceptional results.</p>
+            <div class="module-meta">
+                <span>⏱️ 4 hours</span>
+                <span>📝 20 exercises</span>
+                <span>🏆 4 badges</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Table of Contents -->
+    <aside class="toc-sidebar" id="tocSidebar">
+        <h3>Contents</h3>
+        <ul class="toc-list">
+            <li><a href="#rtfc-framework" class="toc-link">RTFC Framework</a></li>
+            <li><a href="#engineering-patterns" class="toc-link">Engineering Patterns</a></li>
+            <li><a href="#use-cases" class="toc-link">12 Use Case Deep Dives</a></li>
+            <li><a href="#prompt-analyzer" class="toc-link">Prompt Analyzer Tool</a></li>
+            <li><a href="#project-2" class="toc-link">Project 2: Content Generator</a></li>
+            <li><a href="#project-3" class="toc-link">Project 3: Prompt Debugging</a></li>
+        </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="module-content">
+        <div class="container">
+            <!-- Section 1: RTFC Framework -->
+            <section class="content-section" id="rtfc-framework">
+                <div class="section-number">1</div>
+                <h2 class="section-title">The RTFC Framework</h2>
+
+                <p>RTFC is a systematic approach to crafting powerful prompts. It stands for: <strong>Role, Task, Format, Constraints</strong>. Master this and you'll write better prompts than 90% of users.</p>
+
+                <div class="framework-breakdown">
+                    <div class="framework-item">
+                        <div class="framework-icon">🎭</div>
+                        <h3>R - Role</h3>
+                        <p>Define who ChatGPT should be. Giving it a role provides context and expertise.</p>
+                        <div class="framework-examples">
+                            <strong>Examples:</strong>
+                            <ul>
+                                <li>"Act as an experienced software engineer..."</li>
+                                <li>"You are a creative marketing consultant..."</li>
+                                <li>"Respond as a patient tutor..."</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="framework-item">
+                        <div class="framework-icon">📋</div>
+                        <h3>T - Task</h3>
+                        <p>Clearly specify what you want done. Be specific about the action and outcome.</p>
+                        <div class="framework-examples">
+                            <strong>Examples:</strong>
+                            <ul>
+                                <li>"Write a blog post about..."</li>
+                                <li>"Debug this code and explain the errors..."</li>
+                                <li>"Analyze this data and identify trends..."</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="framework-item">
+                        <div class="framework-icon">📄</div>
+                        <h3>F - Format</h3>
+                        <p>Specify how you want the output structured. This ensures usable results.</p>
+                        <div class="framework-examples">
+                            <strong>Examples:</strong>
+                            <ul>
+                                <li>"Format as a numbered list..."</li>
+                                <li>"Create a table with columns: X, Y, Z..."</li>
+                                <li>"Write in markdown with headers and code blocks..."</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="framework-item">
+                        <div class="framework-icon">⚙️</div>
+                        <h3>C - Constraints</h3>
+                        <p>Set boundaries: length, style, what to include/exclude, tone, etc.</p>
+                        <div class="framework-examples">
+                            <strong>Examples:</strong>
+                            <ul>
+                                <li>"Keep it under 300 words..."</li>
+                                <li>"Use simple language, avoid jargon..."</li>
+                                <li>"Focus only on solutions after 2020..."</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="callout callout-info">
+                    <strong>💡 Pro Insight:</strong> You don't always need all four elements, but having them in mind ensures you don't miss critical details. For complex tasks, RTFC is your checklist.
+                </div>
+
+                <!-- Interactive RTFC Builder -->
+                <div class="rtfc-builder">
+                    <h3>🛠️ Interactive RTFC Builder</h3>
+                    <p>Build a professional prompt step-by-step using the RTFC framework:</p>
+
+                    <div class="builder-form">
+                        <div class="builder-input">
+                            <label><strong>R - Role:</strong> Who should ChatGPT be?</label>
+                            <input type="text" id="rtfc-role" placeholder="e.g., experienced copywriter, Python developer, data analyst">
+                            <div class="input-hint">💡 Tip: More specific roles get better results</div>
+                        </div>
+
+                        <div class="builder-input">
+                            <label><strong>T - Task:</strong> What do you want done?</label>
+                            <textarea id="rtfc-task" rows="3" placeholder="e.g., Write a product description for a smart water bottle that tracks hydration"></textarea>
+                            <div class="input-hint">💡 Tip: Include key details and desired outcome</div>
+                        </div>
+
+                        <div class="builder-input">
+                            <label><strong>F - Format:</strong> How should it be structured?</label>
+                            <select id="rtfc-format">
+                                <option value="">Choose a format...</option>
+                                <option value="paragraph">Paragraphs (essay-style)</option>
+                                <option value="bullets">Bullet points</option>
+                                <option value="numbered">Numbered list</option>
+                                <option value="table">Table</option>
+                                <option value="code">Code block</option>
+                                <option value="json">JSON</option>
+                                <option value="markdown">Markdown</option>
+                                <option value="custom">Custom (specify below)</option>
+                            </select>
+                            <input type="text" id="rtfc-format-custom" class="hidden" placeholder="Describe your custom format">
+                        </div>
+
+                        <div class="builder-input">
+                            <label><strong>C - Constraints:</strong> Any limitations or requirements?</label>
+                            <div class="constraints-options">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" class="constraint-check" data-constraint="length">
+                                    <span>Length limit</span>
+                                </label>
+                                <input type="text" id="constraint-length" class="constraint-detail hidden" placeholder="e.g., under 500 words">
+
+                                <label class="checkbox-label">
+                                    <input type="checkbox" class="constraint-check" data-constraint="tone">
+                                    <span>Specific tone</span>
+                                </label>
+                                <input type="text" id="constraint-tone" class="constraint-detail hidden" placeholder="e.g., professional, casual, enthusiastic">
+
+                                <label class="checkbox-label">
+                                    <input type="checkbox" class="constraint-check" data-constraint="audience">
+                                    <span>Target audience</span>
+                                </label>
+                                <input type="text" id="constraint-audience" class="constraint-detail hidden" placeholder="e.g., tech-savvy millennials">
+
+                                <label class="checkbox-label">
+                                    <input type="checkbox" class="constraint-check" data-constraint="other">
+                                    <span>Other constraints</span>
+                                </label>
+                                <textarea id="constraint-other" class="constraint-detail hidden" rows="2" placeholder="Any other requirements..."></textarea>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary btn-large" onclick="generateRTFCPrompt()">Generate Complete Prompt</button>
+                    </div>
+
+                    <div class="generated-prompt hidden" id="rtfc-output">
+                        <h4>Your RTFC Prompt:</h4>
+                        <div class="prompt-display" id="rtfc-prompt-display"></div>
+                        <div class="prompt-actions">
+                            <button class="btn btn-secondary" onclick="copyToClipboard('rtfc-prompt-display')">📋 Copy</button>
+                            <button class="btn btn-primary" onclick="testRTFCPrompt()">🧪 Test in Simulator</button>
+                        </div>
+                        <div class="prompt-stats">
+                            <span><strong>Character count:</strong> <span id="rtfc-char-count">0</span></span>
+                            <span><strong>Est. tokens:</strong> <span id="rtfc-token-count">0</span></span>
+                            <span><strong>Quality score:</strong> <span id="rtfc-quality-score">0/10</span></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exercise-box">
+                    <div class="exercise-header">
+                        <span class="exercise-badge">Exercise 3</span>
+                        <span class="exercise-time">10 minutes</span>
+                    </div>
+                    <h4>RTFC Challenge: Identify Missing Elements</h4>
+                    <p>Each prompt below is missing one RTFC element. Identify which one and rewrite it completely:</p>
+                    <div class="rtfc-quiz" id="rtfcQuiz">
+                        <!-- Generated by JS -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: Prompt Engineering Patterns -->
+            <section class="content-section" id="engineering-patterns">
+                <div class="section-number">2</div>
+                <h2 class="section-title">Advanced Prompt Engineering Patterns</h2>
+
+                <p>Beyond RTFC, professional prompt engineers use specific patterns to solve different types of problems. Master these four core patterns:</p>
+
+                <div class="patterns-grid">
+                    <!-- Pattern 1: Chain-of-Thought -->
+                    <div class="pattern-card">
+                        <div class="pattern-header">
+                            <div class="pattern-icon">🔗</div>
+                            <h3>Chain-of-Thought (CoT)</h3>
+                        </div>
+                        <div class="pattern-description">
+                            <p><strong>When to use:</strong> Complex reasoning, math problems, multi-step analysis</p>
+                            <p><strong>How it works:</strong> Ask ChatGPT to show its reasoning step-by-step</p>
+                        </div>
+                        <div class="pattern-example">
+                            <strong>Example:</strong>
+                            <code class="code-block">"Solve this problem step-by-step, showing your reasoning at each stage:
+
+If a train travels 120 km in 1.5 hours, then stops for 30 minutes, how long will it take to complete a 400 km journey?
+
+Think through this systematically."</code>
+                        </div>
+                        <div class="pattern-benefit">
+                            <strong>✅ Benefit:</strong> More accurate answers, easier to spot errors, educational value
+                        </div>
+                        <button class="btn btn-sm btn-primary" onclick="demoPattern('cot')">Try Example</button>
+                    </div>
+
+                    <!-- Pattern 2: Few-Shot Learning -->
+                    <div class="pattern-card">
+                        <div class="pattern-header">
+                            <div class="pattern-icon">📚</div>
+                            <h3>Few-Shot Learning</h3>
+                        </div>
+                        <div class="pattern-description">
+                            <p><strong>When to use:</strong> Specific formats, style matching, pattern recognition</p>
+                            <p><strong>How it works:</strong> Provide 2-3 examples, then ask for more in the same style</p>
+                        </div>
+                        <div class="pattern-example">
+                            <strong>Example:</strong>
+                            <code class="code-block">"Convert these sentences to tweet format:
+
+Example 1:
+Input: Artificial intelligence is transforming healthcare through predictive diagnostics
+Output: 🏥 AI is revolutionizing healthcare! Predictive diagnostics are saving lives. #HealthTech #AI
+
+Example 2:
+Input: Remote work has increased productivity for many companies
+Output: 💼 Remote work = ⬆️ productivity! Companies are thriving. #FutureOfWork #RemoteLife
+
+Now convert this:
+Input: Renewable energy adoption is accelerating globally"</code>
+                        </div>
+                        <div class="pattern-benefit">
+                            <strong>✅ Benefit:</strong> Consistent formatting, style matching, reduced ambiguity
+                        </div>
+                        <button class="btn btn-sm btn-primary" onclick="demoPattern('fewshot')">Try Example</button>
+                    </div>
+
+                    <!-- Pattern 3: Role-Playing -->
+                    <div class="pattern-card">
+                        <div class="pattern-header">
+                            <div class="pattern-icon">🎭</div>
+                            <h3>Role-Playing</h3>
+                        </div>
+                        <div class="pattern-description">
+                            <p><strong>When to use:</strong> Expert advice, specific perspectives, creative scenarios</p>
+                            <p><strong>How it works:</strong> Assign ChatGPT a detailed persona with expertise and viewpoint</p>
+                        </div>
+                        <div class="pattern-example">
+                            <strong>Example:</strong>
+                            <code class="code-block">"You are a senior UX designer with 10 years of experience at top tech companies. You specialize in mobile app design and have strong opinions about minimalist interfaces.
+
+Review this app concept: [describe concept]
+
+Provide a critical analysis focusing on user experience, including 3 specific improvements and your reasoning for each."</code>
+                        </div>
+                        <div class="pattern-benefit">
+                            <strong>✅ Benefit:</strong> Domain-specific expertise, consistent perspective, detailed analysis
+                        </div>
+                        <button class="btn btn-sm btn-primary" onclick="demoPattern('roleplay')">Try Example</button>
+                    </div>
+
+                    <!-- Pattern 4: Iterative Refinement -->
+                    <div class="pattern-card">
+                        <div class="pattern-header">
+                            <div class="pattern-icon">🔄</div>
+                            <h3>Iterative Refinement</h3>
+                        </div>
+                        <div class="pattern-description">
+                            <p><strong>When to use:</strong> Complex outputs, when first attempt isn't quite right</p>
+                            <p><strong>How it works:</strong> Build on previous responses with specific improvement requests</p>
+                        </div>
+                        <div class="pattern-example">
+                            <strong>Example:</strong>
+                            <code class="code-block">Prompt 1: "Write a product description for noise-cancelling headphones"
+
+[Review response]
+
+Prompt 2: "Rewrite this focusing more on the benefits for remote workers. Make it more conversational."
+
+[Review again]
+
+Prompt 3: "Perfect, but reduce it to 150 words and add a compelling call-to-action."</code>
+                        </div>
+                        <div class="pattern-benefit">
+                            <strong>✅ Benefit:</strong> Progressively better results, fine-tuned control, collaborative feel
+                        </div>
+                        <button class="btn btn-sm btn-primary" onclick="demoPattern('iterative')">Try Example</button>
+                    </div>
+                </div>
+
+                <div class="pro-tip">
+                    <strong>💎 Pro Tip:</strong> Combine patterns! For example, use Chain-of-Thought + Role-Playing: "You are an expert financial advisor. Walk me through step-by-step how you would evaluate this investment opportunity..."
+                </div>
+
+                <div class="exercise-box">
+                    <div class="exercise-header">
+                        <span class="exercise-badge">Exercise 4</span>
+                        <span class="exercise-time">15 minutes</span>
+                    </div>
+                    <h4>Pattern Matching Challenge</h4>
+                    <p>For each scenario, choose the best pattern and write a prompt using it:</p>
+                    <div class="pattern-exercise" id="patternExercise">
+                        <!-- Generated by JS -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: Use Case Deep Dives -->
+            <section class="content-section" id="use-cases">
+                <div class="section-number">3</div>
+                <h2 class="section-title">12 Use Case Deep Dives</h2>
+
+                <p>Let's explore real-world applications across different domains. Each use case includes proven prompts and best practices.</p>
+
+                <div class="use-cases-tabs">
+                    <div class="tabs-nav">
+                        <button class="tab-btn active" data-tab="coding">💻 Coding</button>
+                        <button class="tab-btn" data-tab="writing">✍️ Writing</button>
+                        <button class="tab-btn" data-tab="business">📊 Business</button>
+                        <button class="tab-btn" data-tab="learning">🎓 Learning</button>
+                    </div>
+
+                    <div class="tabs-content">
+                        <!-- Coding Tab -->
+                        <div class="tab-pane active" id="tab-coding">
+                            <div class="use-case-detail">
+                                <h3>Use Case 1: Code Generation</h3>
+                                <div class="use-case-prompt">
+                                    <strong>Effective Prompt:</strong>
+                                    <code class="code-block">"Act as an experienced Python developer.
+
+Write a function that:
+- Takes a list of dictionaries as input
+- Filters items where 'status' is 'active'
+- Sorts by 'timestamp' in descending order
+- Returns only the top 10 results
+
+Include:
+- Type hints
+- Docstring
+- Error handling for edge cases
+- 2-3 test cases"</code>
+                                </div>
+                                <button class="btn btn-sm btn-primary" onclick="simulateUseCase('code-gen')">🧪 Test This</button>
+                            </div>
+
+                            <div class="use-case-detail">
+                                <h3>Use Case 2: Code Review & Debugging</h3>
+                                <div class="use-case-prompt">
+                                    <strong>Effective Prompt:</strong>
+                                    <code class="code-block">"Review this JavaScript code for:
+1. Potential bugs
+2. Performance issues
+3. Security vulnerabilities
+4. Best practice violations
+
+[paste code here]
+
+For each issue found:
+- Explain what's wrong
+- Show the corrected code
+- Explain why your version is better"</code>
+                                </div>
+                                <button class="btn btn-sm btn-primary" onclick="simulateUseCase('code-review')">🧪 Test This</button>
+                            </div>
+
+                            <div class="use-case-detail">
+                                <h3>Use Case 3: Documentation Writing</h3>
+                                <div class="use-case-prompt">
+                                    <strong>Effective Prompt:</strong>
+                                    <code class="code-block">"Generate comprehensive documentation for this API endpoint:
+
+[paste code/endpoint details]
+
+Include:
+- Description of what it does
+- Parameters (name, type, required/optional, description)
+- Return values
+- Example request/response
+- Possible error codes
+- Usage notes or warnings
+
+Format in Markdown."</code>
+                                </div>
+                                <button class="btn btn-sm btn-primary" onclick="simulateUseCase('docs')">🧪 Test This</button>
+                            </div>
+                        </div>
+
+                        <!-- Writing Tab -->
+                        <div class="tab-pane" id="tab-writing">
+                            <div class="use-case-detail">
+                                <h3>Use Case 4: Content Creation</h3>
+                                <div class="use-case-prompt">
+                                    <strong>Effective Prompt:</strong>
+                                    <code class="code-block">"Write a 600-word blog post about [topic].
+
+Target audience: [describe audience]
+Tone: [professional/casual/enthusiastic]
+Goal: [educate/persuade/entertain]
+
+Structure:
+- Hook (compelling opening)
+- 3 main points with examples
+- Actionable conclusion
+
+Include:
+- SEO-friendly subheadings
+- Natural keyword integration: [keywords]
+- Call-to-action at end"</code>
+                                </div>
+                                <button class="btn btn-sm btn-primary" onclick="simulateUseCase('content')">🧪 Test This</button>
+                            </div>
+
+                            <div class="use-case-detail">
+                                <h3>Use Case 5: Editing & Proofreading</h3>
+                                <div class="use-case-prompt">
+                                    <strong>Effective Prompt:</strong>
+                                    <code class="code-block">"Edit the following text for:
+- Grammar and spelling errors
+- Clarity and conciseness
+- Tone consistency (keep it [professional/casual])
+- Flow and readability
+
+Provide:
+1. The edited version
+2. A summary of major changes made
+3. Suggestions for further improvement
+
+Text to edit:
+[paste text here]"</code>
+                                </div>
+                                <button class="btn btn-sm btn-primary" onclick="simulateUseCase('editing')">🧪 Test This</button>
+                            </div>
+
+                            <div class="use-case-detail">
+                                <h3>Use Case 6: Email Composition</h3>
+                                <div class="use-case-prompt">
+                                    <strong>Effective Prompt:</strong>
+                                    <code class="code-block">"Write a professional email with:
+
+Context: [describe situation]
+Recipient: [their role/relationship to you]
+Purpose: [what you want to achieve]
+Tone: [formal/friendly professional]
+
+Key points to cover:
+1. [point 1]
+2. [point 2]
+3. [point 3]
+
+Keep it concise (under 200 words) and include a clear call-to-action."</code>
+                                </div>
+                                <button class="btn btn-sm btn-primary" onclick="simulateUseCase('email')">🧪 Test This</button>
+                            </div>
+                        </div>
+
+                        <!-- Business Tab -->
+                        <div class="tab-pane" id="tab-business">
+                            <div class="use-case-detail">
+                                <h3>Use Case 7: Data Analysis</h3>
+                                <div class="use-case-prompt">
+                                    <strong>Effective Prompt:</strong>
+                                    <code class="code-block">"Analyze this dataset and provide insights:
+
+[paste data or describe dataset]
+
+Focus on:
+- Key trends and patterns
+- Anomalies or outliers
+- Correlations between variables
+- Actionable recommendations
+
+Present findings as:
+1. Executive summary (3-4 sentences)
+2. Detailed analysis with specific numbers
+3. Visualizations needed (describe what charts would help)
+4. Next steps"</code>
+                                </div>
+                                <button class="btn btn-sm btn-primary" onclick="simulateUseCase('analysis')">🧪 Test This</button>
+                            </div>
+
+                            <div class="use-case-detail">
+                                <h3>Use Case 8: Meeting Summarization</h3>
+                                <div class="use-case-prompt">
+                                    <strong>Effective Prompt:</strong>
+                                    <code class="code-block">"Summarize these meeting notes:
+
+[paste transcript or notes]
+
+Format as:
+- Key Decisions Made (bullet points)
+- Action Items (person responsible, deadline, task)
+- Important Discussion Points
+- Next Meeting Date/Topics
+
+Keep it scannable and under 300 words."</code>
+                                </div>
+                                <button class="btn btn-sm btn-primary" onclick="simulateUseCase('meeting')">🧪 Test This</button>
+                            </div>
+
+                            <div class="use-case-detail">
+                                <h3>Use Case 9: Competitive Analysis</h3>
+                                <div class="use-case-prompt">
+                                    <strong>Effective Prompt:</strong>
+                                    <code class="code-block">"Create a competitive analysis comparing:
+
+Our product: [describe]
+Competitor 1: [name and describe]
+Competitor 2: [name and describe]
+Competitor 3: [name and describe]
+
+Analyze:
+- Feature comparison (table format)
+- Pricing strategy
+- Target market differences
+- Unique selling propositions
+- Strengths and weaknesses of each
+
+Conclude with 3 strategic recommendations for our positioning."</code>
+                                </div>
+                                <button class="btn btn-sm btn-primary" onclick="simulateUseCase('competitive')">🧪 Test This</button>
+                            </div>
+                        </div>
+
+                        <!-- Learning Tab -->
+                        <div class="tab-pane" id="tab-learning">
+                            <div class="use-case-detail">
+                                <h3>Use Case 10: Concept Explanation</h3>
+                                <div class="use-case-prompt">
+                                    <strong>Effective Prompt:</strong>
+                                    <code class="code-block">"Explain [complex concept] at three different levels:
+
+1. ELI5 (Explain Like I'm 5): Simple analogy, no technical terms
+2. High School: More detail, introduce key terminology
+3. College/Professional: Technical depth, nuances, real applications
+
+For each level:
+- Use relevant examples
+- Build on the previous explanation
+- End with a 'check your understanding' question"</code>
+                                </div>
+                                <button class="btn btn-sm btn-primary" onclick="simulateUseCase('explain')">🧪 Test This</button>
+                            </div>
+
+                            <div class="use-case-detail">
+                                <h3>Use Case 11: Study Guide Creation</h3>
+                                <div class="use-case-prompt">
+                                    <strong>Effective Prompt:</strong>
+                                    <code class="code-block">"Create a study guide for [topic/subject]:
+
+Content to cover:
+[paste syllabus, chapter, or topic list]
+
+Include:
+- Key concepts with definitions
+- Important formulas/rules (if applicable)
+- Practice questions (5 easy, 5 medium, 2 hard)
+- Common mistakes to avoid
+- Memory techniques or mnemonics
+- Additional resources for deeper learning
+
+Format for easy scanning and review."</code>
+                                </div>
+                                <button class="btn btn-sm btn-primary" onclick="simulateUseCase('study')">🧪 Test This</button>
+                            </div>
+
+                            <div class="use-case-detail">
+                                <h3>Use Case 12: Practice Problem Generation</h3>
+                                <div class="use-case-prompt">
+                                    <strong>Effective Prompt:</strong>
+                                    <code class="code-block">"Generate 10 practice problems for [subject/topic].
+
+Requirements:
+- Difficulty: [beginner/intermediate/advanced]
+- Type: [multiple choice/short answer/practical application]
+- Focus areas: [list specific concepts]
+
+For each problem:
+- Clear question
+- Worked solution showing steps
+- Explanation of key concepts used
+- Related problems for more practice"</code>
+                                </div>
+                                <button class="btn btn-sm btn-primary" onclick="simulateUseCase('practice')">🧪 Test This</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="callout callout-success">
+                    <strong>🎯 Your Challenge:</strong> Pick 3 use cases most relevant to you. Create your own prompts using the RTFC framework and test them in the Playground. Save the ones that work best!
+                </div>
+            </section>
+
+            <!-- Section 4: Prompt Analyzer Tool -->
+            <section class="content-section" id="prompt-analyzer">
+                <div class="section-number">4</div>
+                <h2 class="section-title">The Prompt Analyzer Tool</h2>
+
+                <p>Paste any prompt below to get instant feedback on its quality. The analyzer scores clarity, specificity, structure, and provides improvement suggestions.</p>
+
+                <div class="analyzer-tool">
+                    <div class="analyzer-input-section">
+                        <label><strong>Paste your prompt here:</strong></label>
+                        <textarea id="promptToAnalyze" rows="8" placeholder="Example: Write a blog post about AI"></textarea>
+                        <button class="btn btn-primary btn-large" onclick="analyzePrompt()">🔍 Analyze Prompt</button>
+                    </div>
+
+                    <div class="analyzer-results hidden" id="analyzerResults">
+                        <h3>Analysis Results</h3>
+
+                        <div class="overall-score">
+                            <div class="score-circle">
+                                <svg viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="45" class="score-bg"></circle>
+                                    <circle cx="50" cy="50" r="45" class="score-fill" id="scoreCircle"></circle>
+                                </svg>
+                                <div class="score-text">
+                                    <span class="score-number" id="overallScore">0</span>
+                                    <span class="score-label">/10</span>
+                                </div>
+                            </div>
+                            <div class="score-breakdown">
+                                <div class="breakdown-item">
+                                    <span class="breakdown-label">Clarity</span>
+                                    <div class="breakdown-bar">
+                                        <div class="breakdown-fill" id="clarityScore"></div>
+                                    </div>
+                                    <span class="breakdown-value" id="clarityValue">0/10</span>
+                                </div>
+                                <div class="breakdown-item">
+                                    <span class="breakdown-label">Specificity</span>
+                                    <div class="breakdown-bar">
+                                        <div class="breakdown-fill" id="specificityScore"></div>
+                                    </div>
+                                    <span class="breakdown-value" id="specificityValue">0/10</span>
+                                </div>
+                                <div class="breakdown-item">
+                                    <span class="breakdown-label">Structure</span>
+                                    <div class="breakdown-bar">
+                                        <div class="breakdown-fill" id="structureScore"></div>
+                                    </div>
+                                    <span class="breakdown-value" id="structureValue">0/10</span>
+                                </div>
+                                <div class="breakdown-item">
+                                    <span class="breakdown-label">Constraints</span>
+                                    <div class="breakdown-bar">
+                                        <div class="breakdown-fill" id="constraintsScore"></div>
+                                    </div>
+                                    <span class="breakdown-value" id="constraintsValue">0/10</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="analysis-sections">
+                            <div class="analysis-section">
+                                <h4>✅ Strengths</h4>
+                                <ul id="promptStrengths">
+                                    <!-- Generated by JS -->
+                                </ul>
+                            </div>
+
+                            <div class="analysis-section">
+                                <h4>⚠️ Areas for Improvement</h4>
+                                <ul id="promptWeaknesses">
+                                    <!-- Generated by JS -->
+                                </ul>
+                            </div>
+
+                            <div class="analysis-section">
+                                <h4>💡 Improved Version</h4>
+                                <div class="improved-prompt" id="improvedPrompt">
+                                    <!-- Generated by JS -->
+                                </div>
+                                <button class="btn btn-sm btn-secondary" onclick="copyImprovedPrompt()">📋 Copy Improved Version</button>
+                            </div>
+                        </div>
+
+                        <div class="analyzer-actions">
+                            <button class="btn btn-primary" onclick="testImprovedPrompt()">🧪 Test Improved Prompt</button>
+                            <button class="btn btn-secondary" onclick="resetAnalyzer()">↺ Analyze Another</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pro-tip">
+                    <strong>💎 Pro Tip:</strong> Run all your important prompts through the analyzer before using them. Even small improvements can significantly impact response quality.
+                </div>
+            </section>
+
+            <!-- Section 5: Prompt Battle -->
+            <section class="content-section" id="prompt-battle">
+                <div class="section-number">5</div>
+                <h2 class="section-title">Prompt Battle: A/B Testing</h2>
+
+                <p>Compare two versions of a prompt side-by-side to see which performs better. This is how professionals optimize their prompts.</p>
+
+                <div class="battle-arena">
+                    <div class="battle-inputs">
+                        <div class="battle-input-column">
+                            <h4>Version A</h4>
+                            <textarea id="promptA" rows="6" placeholder="Paste or write your first prompt version..."></textarea>
+                        </div>
+
+                        <div class="battle-vs">
+                            <div class="vs-badge">VS</div>
+                        </div>
+
+                        <div class="battle-input-column">
+                            <h4>Version B</h4>
+                            <textarea id="promptB" rows="6" placeholder="Paste or write your second prompt version..."></textarea>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary btn-large" onclick="runPromptBattle()">⚔️ Run Battle</button>
+
+                    <div class="battle-results hidden" id="battleResults">
+                        <div class="battle-responses">
+                            <div class="battle-response">
+                                <h4>Response A</h4>
+                                <div class="response-content" id="responseA"></div>
+                                <div class="response-stats">
+                                    <span>Length: <strong id="lengthA">0</strong> words</span>
+                                    <span>Quality: <strong id="qualityA">0</strong>/10</span>
+                                </div>
+                            </div>
+
+                            <div class="battle-response">
+                                <h4>Response B</h4>
+                                <div class="response-content" id="responseB"></div>
+                                <div class="response-stats">
+                                    <span>Length: <strong id="lengthB">0</strong> words</span>
+                                    <span>Quality: <strong id="qualityB">0</strong>/10</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="battle-verdict">
+                            <h4>Your Verdict</h4>
+                            <p>Which response was better?</p>
+                            <div class="verdict-buttons">
+                                <button class="btn btn-secondary" onclick="votePrompt('A')">Version A</button>
+                                <button class="btn btn-secondary" onclick="votePrompt('tie')">It's a Tie</button>
+                                <button class="btn btn-secondary" onclick="votePrompt('B')">Version B</button>
+                            </div>
+                            <div class="verdict-explanation hidden" id="verdictExplanation"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Project 2 -->
+            <section class="content-section" id="project-2">
+                <div class="section-number">6</div>
+                <h2 class="section-title">Project #2: Custom Content Generator</h2>
+
+                <div class="project-intro">
+                    <p>Build a specialized content generator for your specific needs. You'll create a comprehensive prompt system that consistently produces high-quality content.</p>
+                    <div class="project-meta">
+                        <span>⏱️ 30 minutes</span>
+                        <span>🎯 Difficulty: Intermediate</span>
+                        <span>🏆 Earns "Content Master" Badge</span>
+                    </div>
+                </div>
+
+                <div class="project-steps">
+                    <!-- Project instructions generated by JS -->
+                    <div id="project2Container"></div>
+                </div>
+            </section>
+
+            <!-- Project 3 -->
+            <section class="content-section" id="project-3">
+                <div class="section-number">7</div>
+                <h2 class="section-title">Project #3: Debug & Improve Bad Prompts</h2>
+
+                <div class="project-intro">
+                    <p>Apply your prompt engineering skills to fix 5 real-world examples of poorly written prompts. Each one has multiple issues to identify and correct.</p>
+                    <div class="project-meta">
+                        <span>⏱️ 25 minutes</span>
+                        <span>🎯 Difficulty: Intermediate</span>
+                        <span>🏆 Earns "Prompt Doctor" Badge</span>
+                    </div>
+                </div>
+
+                <div class="debug-challenges" id="debugChallenges">
+                    <!-- Generated by JS -->
+                </div>
+            </section>
+
+            <!-- Download Prompt Library -->
+            <section class="content-section">
+                <div class="download-section">
+                    <h3>📚 Download Your Prompt Library</h3>
+                    <p>Get all 50+ prompts from this module as a JSON file. Import it into your projects or reference it anytime.</p>
+                    <button class="btn btn-success btn-large" onclick="downloadPromptLibrary()">⬇️ Download Prompt Library (JSON)</button>
+                </div>
+            </section>
+
+            <!-- Completion Check -->
+            <section class="completion-section">
+                <div class="completion-card" id="completionCard">
+                    <h3>🎯 Module Completion</h3>
+                    <p>You've completed <strong><span id="sectionProgress">0/7</span></strong> sections in this module.</p>
+                    <div class="completion-actions">
+                        <button class="btn btn-primary btn-large" id="unlockExpert" disabled>🔓 Unlock Expert Module</button>
+                        <a href="index.html" class="btn btn-secondary">Return to Dashboard</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-nav">
+                <a href="beginner.html" class="btn btn-secondary">← Back: Beginner</a>
+                <a href="expert.html" class="btn btn-primary" id="nextModuleBtn">Next: Expert →</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/prompts.js"></script>
+    <script src="js/simulator.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            initIntermediate();
+        });
+    </script>
+</body>
+</html>

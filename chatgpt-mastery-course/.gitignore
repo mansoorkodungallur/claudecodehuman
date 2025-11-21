@@ -1,0 +1,116 @@
+# ChatGPT Mastery Course - .gitignore
+
+# Operating System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# IDE and Editor Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+*.sublime-workspace
+*.sublime-project
+
+# Logs and Databases
+*.log
+*.sql
+*.sqlite
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependency Directories
+node_modules/
+bower_components/
+
+# Environment Variables
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+*.env
+
+# API Keys and Secrets
+config/secrets.json
+config/api-keys.json
+secrets/
+*.pem
+*.key
+*.cert
+
+# Build Outputs (if you add a build process)
+dist/
+build/
+*.min.js
+*.min.css
+
+# Package Manager Files
+package-lock.json
+yarn.lock
+.pnpm-debug.log
+
+# Temporary Files
+tmp/
+temp/
+*.tmp
+*.bak
+*.cache
+
+# User Data (if implementing backend)
+data/users/
+data/sessions/
+*.db
+
+# Coverage and Test Reports
+coverage/
+.nyc_output/
+*.lcov
+
+# Documentation Build
+docs/_build/
+
+# Python (if using Python for API examples)
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+
+# Optional: Ignore personal progress/customizations
+# Uncomment if you want to keep personal data private
+# data/progress.json
+# localStorage-backup.json
+
+# MacOS
+.AppleDouble
+.LSOverride
+
+# Windows
+$RECYCLE.BIN/
+
+# Linux
+.directory
+.Trash-*
+
+# Backup files
+*.backup
+*~
+
+# Editor-specific
+.kate-swp
+.viminfo

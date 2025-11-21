@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expert: Advanced Automation - ChatGPT Mastery Course</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/prism.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="main-nav" id="mainNav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h1>ChatGPT Mastery</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="beginner.html">Beginner</a></li>
+                <li><a href="intermediate.html">Intermediate</a></li>
+                <li><a href="expert.html" class="active">Expert</a></li>
+                <li><a href="playground.html">Playground</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                <span class="theme-icon">🌙</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Progress Bar -->
+    <div class="page-progress" id="pageProgress">
+        <div class="progress-fill" id="pageProgressFill"></div>
+    </div>
+
+    <!-- Hero -->
+    <section class="module-hero expert-hero">
+        <div class="container">
+            <div class="module-badge">Module 3</div>
+            <h1 class="module-title">Expert: Advanced Automation</h1>
+            <p class="module-subtitle">Build production-ready AI tools. Master API integration, workflow automation, and custom GPT development.</p>
+            <div class="module-meta">
+                <span>⏱️ 6 hours</span>
+                <span>📝 20 exercises</span>
+                <span>🏆 4 badges</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Table of Contents -->
+    <aside class="toc-sidebar" id="tocSidebar">
+        <h3>Contents</h3>
+        <ul class="toc-list">
+            <li><a href="#api-fundamentals" class="toc-link">API Fundamentals</a></li>
+            <li><a href="#token-management" class="toc-link">Token Management</a></li>
+            <li><a href="#workflow-automation" class="toc-link">Chaining & Workflows</a></li>
+            <li><a href="#custom-gpts" class="toc-link">Custom GPT Creation</a></li>
+            <li><a href="#project-4" class="toc-link">Project 4: Content Pipeline</a></li>
+            <li><a href="#optimization" class="toc-link">Performance Optimization</a></li>
+        </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="module-content">
+        <div class="container">
+            <!-- Section 1: API Fundamentals -->
+            <section class="content-section" id="api-fundamentals">
+                <div class="section-number">1</div>
+                <h2 class="section-title">API Fundamentals</h2>
+
+                <p>Move beyond the web interface. Learn to programmatically interact with ChatGPT using the OpenAI API. This unlocks automation, integration, and scalability.</p>
+
+                <div class="callout callout-info">
+                    <strong>📌 Prerequisites:</strong> Basic programming knowledge in Python or JavaScript. You'll need an OpenAI API key (get one at platform.openai.com).
+                </div>
+
+                <!-- Python Examples -->
+                <div class="api-section">
+                    <h3>🐍 Python Implementation</h3>
+
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span class="code-title">1. Installation & Setup</span>
+                            <button class="copy-code-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code class="language-python"># Install the OpenAI library
+# Run in terminal: pip install openai
+
+from openai import OpenAI
+import os
+
+# Initialize the client with your API key
+client = OpenAI(
+    api_key=os.environ.get("OPENAI_API_KEY")
+)
+
+# Best practice: Never hardcode your API key!
+# Set it as an environment variable:
+# export OPENAI_API_KEY='your-key-here'</code></pre>
+                    </div>
+
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span class="code-title">2. Basic Chat Completion</span>
+                            <button class="copy-code-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code class="language-python">def simple_chat(user_message):
+    """Send a single message and get a response."""
+    try:
+        response = client.chat.completions.create(
+            model="gpt-4",  # or "gpt-3.5-turbo" for faster/cheaper
+            messages=[
+                {"role": "user", "content": user_message}
+            ],
+            temperature=0.7,  # 0-2, higher = more creative
+            max_tokens=500    # Limit response length
+        )
+
+        return response.choices[0].message.content
+
+    except Exception as e:
+        return f"Error: {str(e)}"
+
+# Example usage
+result = simple_chat("Explain quantum computing in 3 sentences")
+print(result)</code></pre>
+                    </div>
+
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span class="code-title">3. Conversation with Context</span>
+                            <button class="copy-code-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code class="language-python">class ChatBot:
+    """A stateful chatbot that remembers conversation context."""
+
+    def __init__(self, system_prompt="You are a helpful assistant."):
+        self.messages = [
+            {"role": "system", "content": system_prompt}
+        ]
+
+    def chat(self, user_message):
+        """Add user message, get response, and maintain history."""
+        # Add user message to history
+        self.messages.append({
+            "role": "user",
+            "content": user_message
+        })
+
+        try:
+            # Get response
+            response = client.chat.completions.create(
+                model="gpt-4",
+                messages=self.messages,
+                temperature=0.7,
+                max_tokens=500
+            )
+
+            # Extract assistant's reply
+            assistant_message = response.choices[0].message.content
+
+            # Add to history
+            self.messages.append({
+                "role": "assistant",
+                "content": assistant_message
+            })
+
+            return assistant_message
+
+        except Exception as e:
+            return f"Error: {str(e)}"
+
+    def reset(self, system_prompt=None):
+        """Clear conversation history."""
+        if system_prompt:
+            self.messages = [{"role": "system", "content": system_prompt}]
+        else:
+            self.messages = [self.messages[0]]  # Keep system message
+
+# Example usage
+bot = ChatBot("You are a Python expert who explains concepts clearly.")
+print(bot.chat("What are decorators?"))
+print(bot.chat("Can you show me an example?"))  # Remembers context!
+</code></pre>
+                    </div>
+
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span class="code-title">4. Error Handling & Retries</span>
+                            <button class="copy-code-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code class="language-python">import time
+from openai import OpenAI, APIError, RateLimitError, APIConnectionError
+
+def robust_chat(user_message, max_retries=3):
+    """Chat with automatic retry logic for common errors."""
+
+    for attempt in range(max_retries):
+        try:
+            response = client.chat.completions.create(
+                model="gpt-4",
+                messages=[{"role": "user", "content": user_message}],
+                timeout=30  # 30 second timeout
+            )
+            return response.choices[0].message.content
+
+        except RateLimitError:
+            # Hit rate limit, wait and retry
+            wait_time = (2 ** attempt)  # Exponential backoff
+            print(f"Rate limited. Waiting {wait_time}s...")
+            time.sleep(wait_time)
+
+        except APIConnectionError:
+            # Network issue
+            print(f"Connection error. Retry {attempt + 1}/{max_retries}")
+            time.sleep(2)
+
+        except APIError as e:
+            # General API error
+            print(f"API Error: {e}")
+            return None
+
+        except Exception as e:
+            # Unexpected error
+            print(f"Unexpected error: {e}")
+            return None
+
+    return "Failed after max retries"
+
+# Example usage
+result = robust_chat("Write a haiku about programming")
+print(result)</code></pre>
+                    </div>
+
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span class="code-title">5. Streaming Responses</span>
+                            <button class="copy-code-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code class="language-python">def streaming_chat(user_message):
+    """Stream the response token by token (like ChatGPT web interface)."""
+
+    try:
+        stream = client.chat.completions.create(
+            model="gpt-4",
+            messages=[{"role": "user", "content": user_message}],
+            stream=True  # Enable streaming
+        )
+
+        full_response = ""
+
+        for chunk in stream:
+            # Get the content from this chunk
+            if chunk.choices[0].delta.content is not None:
+                content = chunk.choices[0].delta.content
+                full_response += content
+                print(content, end='', flush=True)  # Print as it arrives
+
+        print()  # New line at end
+        return full_response
+
+    except Exception as e:
+        print(f"Error: {e}")
+        return None
+
+# Example usage
+streaming_chat("Write a short story about a robot learning to paint")</code></pre>
+                    </div>
+                </div>
+
+                <!-- Node.js Examples -->
+                <div class="api-section">
+                    <h3>🟢 Node.js Implementation</h3>
+
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span class="code-title">1. Installation & Setup</span>
+                            <button class="copy-code-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code class="language-javascript">// Install: npm install openai
+
+import OpenAI from 'openai';
+
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY
+});
+
+// Best practice: Store API key in .env file
+// Then load with: require('dotenv').config();</code></pre>
+                    </div>
+
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span class="code-title">2. Basic Chat Completion</span>
+                            <button class="copy-code-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code class="language-javascript">async function simpleChat(userMessage) {
+  try {
+    const completion = await openai.chat.completions.create({
+      model: "gpt-4",
+      messages: [
+        { role: "user", content: userMessage }
+      ],
+      temperature: 0.7,
+      max_tokens: 500
+    });
+
+    return completion.choices[0].message.content;
+
+  } catch (error) {
+    console.error('Error:', error.message);
+    return null;
+  }
+}
+
+// Example usage
+simpleChat("Explain async/await in JavaScript")
+  .then(result => console.log(result));</code></pre>
+                    </div>
+
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span class="code-title">3. Conversation with Context</span>
+                            <button class="copy-code-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code class="language-javascript">class ChatBot {
+  constructor(systemPrompt = "You are a helpful assistant.") {
+    this.messages = [
+      { role: "system", content: systemPrompt }
+    ];
+  }
+
+  async chat(userMessage) {
+    // Add user message
+    this.messages.push({
+      role: "user",
+      content: userMessage
+    });
+
+    try {
+      const completion = await openai.chat.completions.create({
+        model: "gpt-4",
+        messages: this.messages,
+        temperature: 0.7,
+        max_tokens: 500
+      });
+
+      const assistantMessage = completion.choices[0].message.content;
+
+      // Add assistant response to history
+      this.messages.push({
+        role: "assistant",
+        content: assistantMessage
+      });
+
+      return assistantMessage;
+
+    } catch (error) {
+      console.error('Error:', error);
+      return null;
+    }
+  }
+
+  reset(systemPrompt = null) {
+    if (systemPrompt) {
+      this.messages = [{ role: "system", content: systemPrompt }];
+    } else {
+      this.messages = [this.messages[0]];
+    }
+  }
+}
+
+// Example usage
+const bot = new ChatBot("You are a JavaScript expert.");
+(async () => {
+  console.log(await bot.chat("What are closures?"));
+  console.log(await bot.chat("Show me an example"));
+})();</code></pre>
+                    </div>
+                </div>
+
+                <div class="pro-tip">
+                    <strong>💎 Pro Tip:</strong> Always implement error handling and rate limiting. OpenAI APIs have usage limits, and production apps must handle failures gracefully.
+                </div>
+
+                <div class="exercise-box">
+                    <div class="exercise-header">
+                        <span class="exercise-badge">Exercise 5</span>
+                        <span class="exercise-time">20 minutes</span>
+                    </div>
+                    <h4>Build Your First API Tool</h4>
+                    <p>Choose one of these mini-projects and implement it using the API:</p>
+                    <div class="exercise-options">
+                        <div class="option-card">
+                            <h5>1. Text Summarizer</h5>
+                            <p>Create a script that reads a long text file and generates a concise summary.</p>
+                        </div>
+                        <div class="option-card">
+                            <h5>2. Code Explainer</h5>
+                            <p>Build a tool that takes code as input and explains what it does line-by-line.</p>
+                        </div>
+                        <div class="option-card">
+                            <h5>3. Email Drafter</h5>
+                            <p>Make a CLI tool that generates professional emails based on bullet points.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: Token Management -->
+            <section class="content-section" id="token-management">
+                <div class="section-number">2</div>
+                <h2 class="section-title">Token Management & Cost Optimization</h2>
+
+                <p>Understanding tokens is crucial for cost control and performance optimization. Every API call costs money based on token usage.</p>
+
+                <div class="token-explainer">
+                    <h3>What Are Tokens?</h3>
+                    <p>Tokens are chunks of text that the AI processes. Roughly speaking:</p>
+                    <ul>
+                        <li><strong>1 token ≈ 4 characters</strong> in English</li>
+                        <li><strong>1 token ≈ ¾ of a word</strong> on average</li>
+                        <li><strong>100 tokens ≈ 75 words</strong></li>
+                    </ul>
+                    <p>Both input (prompt) and output (response) count toward your usage.</p>
+                </div>
+
+                <!-- Token Calculator -->
+                <div class="token-calculator">
+                    <h3>🧮 Token & Cost Calculator</h3>
+
+                    <div class="calculator-inputs">
+                        <div class="calc-input">
+                            <label><strong>Your Prompt:</strong></label>
+                            <textarea id="calcPrompt" rows="4" placeholder="Paste your prompt here..."></textarea>
+                            <div class="calc-stat">Input tokens: <strong id="inputTokens">0</strong></div>
+                        </div>
+
+                        <div class="calc-input">
+                            <label><strong>Expected Response Length:</strong></label>
+                            <select id="responseLength">
+                                <option value="100">Short (100 tokens / ~75 words)</option>
+                                <option value="500">Medium (500 tokens / ~375 words)</option>
+                                <option value="1000">Long (1000 tokens / ~750 words)</option>
+                                <option value="2000">Very Long (2000 tokens / ~1500 words)</option>
+                            </select>
+                            <div class="calc-stat">Output tokens: <strong id="outputTokens">100</strong></div>
+                        </div>
+
+                        <div class="calc-input">
+                            <label><strong>Model:</strong></label>
+                            <select id="modelSelect">
+                                <option value="gpt4">GPT-4 ($0.03 input / $0.06 output per 1K tokens)</option>
+                                <option value="gpt4turbo">GPT-4 Turbo ($0.01 input / $0.03 output per 1K tokens)</option>
+                                <option value="gpt35">GPT-3.5 Turbo ($0.0005 input / $0.0015 output per 1K tokens)</option>
+                            </select>
+                        </div>
+
+                        <button class="btn btn-primary" onclick="calculateCost()">Calculate Cost</button>
+                    </div>
+
+                    <div class="calculator-results hidden" id="calcResults">
+                        <h4>Cost Breakdown</h4>
+                        <div class="cost-grid">
+                            <div class="cost-item">
+                                <span class="cost-label">Cost per request:</span>
+                                <span class="cost-value" id="perRequest">$0.000</span>
+                            </div>
+                            <div class="cost-item">
+                                <span class="cost-label">Cost for 100 requests:</span>
+                                <span class="cost-value" id="hundred">$0.00</span>
+                            </div>
+                            <div class="cost-item">
+                                <span class="cost-label">Cost for 1,000 requests:</span>
+                                <span class="cost-value" id="thousand">$0.00</span>
+                            </div>
+                            <div class="cost-item">
+                                <span class="cost-label">Cost for 10,000 requests:</span>
+                                <span class="cost-value" id="tenThousand">$0.00</span>
+                            </div>
+                        </div>
+
+                        <div class="cost-comparison">
+                            <h5>Model Comparison (same prompt):</h5>
+                            <div id="modelComparison"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Optimization Strategies -->
+                <div class="optimization-strategies">
+                    <h3>💰 Cost Optimization Strategies</h3>
+
+                    <div class="strategy-grid">
+                        <div class="strategy-card">
+                            <div class="strategy-number">1</div>
+                            <h4>Choose the Right Model</h4>
+                            <p>Use GPT-3.5 Turbo for simple tasks (10-20x cheaper). Reserve GPT-4 for complex reasoning.</p>
+                            <div class="strategy-example">
+                                <strong>Example:</strong> Summarization, simple Q&A → GPT-3.5<br>
+                                Complex analysis, creative writing → GPT-4
+                            </div>
+                        </div>
+
+                        <div class="strategy-card">
+                            <div class="strategy-number">2</div>
+                            <h4>Limit Response Length</h4>
+                            <p>Use <code>max_tokens</code> to cap response size. Don't pay for more than you need.</p>
+                            <div class="strategy-example">
+                                <strong>Code:</strong>
+                                <pre><code>max_tokens=200  # For short answers</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="strategy-card">
+                            <div class="strategy-number">3</div>
+                            <h4>Compress Your Prompts</h4>
+                            <p>Remove unnecessary words while maintaining clarity. Every token counts.</p>
+                            <div class="strategy-example">
+                                <strong>Before:</strong> "Could you please write a summary..."<br>
+                                <strong>After:</strong> "Summarize:"
+                            </div>
+                        </div>
+
+                        <div class="strategy-card">
+                            <div class="strategy-number">4</div>
+                            <h4>Cache Common Responses</h4>
+                            <p>For repeated queries, cache results locally instead of calling API every time.</p>
+                            <div class="strategy-example">
+                                <strong>Savings:</strong> If same question asked 100x, pay once instead of 100x.
+                            </div>
+                        </div>
+
+                        <div class="strategy-card">
+                            <div class="strategy-number">5</div>
+                            <h4>Batch Process When Possible</h4>
+                            <p>Combine multiple simple requests into one API call where logical.</p>
+                            <div class="strategy-example">
+                                <strong>Instead of:</strong> 10 calls for 10 summaries<br>
+                                <strong>Do:</strong> 1 call: "Summarize each of these 10 texts..."
+                            </div>
+                        </div>
+
+                        <div class="strategy-card">
+                            <div class="strategy-number">6</div>
+                            <h4>Set Usage Limits</h4>
+                            <p>Use OpenAI's usage limits to prevent unexpected bills from bugs or abuse.</p>
+                            <div class="strategy-example">
+                                <strong>Where:</strong> OpenAI Dashboard → Usage Limits
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="callout callout-warning">
+                    <strong>⚠️ Real-World Costs:</strong> A typical chatbot with 1000 daily users averaging 10 messages each (500 tokens per exchange) on GPT-4 would cost ~$600/day. On GPT-3.5 Turbo, the same usage costs ~$30/day. Choose wisely!
+                </div>
+            </section>
+
+            <!-- Section 3: Workflow Automation -->
+            <section class="content-section" id="workflow-automation">
+                <div class="section-number">3</div>
+                <h2 class="section-title">Chaining & Parallelization</h2>
+
+                <p>Build sophisticated workflows by combining multiple AI calls. This is how professional AI tools are built.</p>
+
+                <div class="workflow-patterns">
+                    <h3>Common Workflow Patterns</h3>
+
+                    <div class="pattern-showcase">
+                        <!-- Sequential Chain -->
+                        <div class="workflow-pattern">
+                            <h4>🔗 Sequential Chain</h4>
+                            <p>Output of one call becomes input to the next. Use for multi-step transformations.</p>
+                            <div class="workflow-diagram">
+                                <div class="flow-step">Raw Text</div>
+                                <div class="flow-arrow">→</div>
+                                <div class="flow-step">Summarize</div>
+                                <div class="flow-arrow">→</div>
+                                <div class="flow-step">Extract Key Points</div>
+                                <div class="flow-arrow">→</div>
+                                <div class="flow-step">Generate Action Items</div>
+                            </div>
+                            <div class="workflow-code">
+                                <strong>Python Example:</strong>
+                                <pre><code class="language-python">def sequential_workflow(text):
+    # Step 1: Summarize
+    summary = simple_chat(f"Summarize this in 2 paragraphs:\n{text}")
+
+    # Step 2: Extract key points
+    key_points = simple_chat(f"Extract 5 key points from:\n{summary}")
+
+    # Step 3: Generate action items
+    actions = simple_chat(f"Convert to action items:\n{key_points}")
+
+    return {
+        'summary': summary,
+        'key_points': key_points,
+        'actions': actions
+    }</code></pre>
+                            </div>
+                        </div>
+
+                        <!-- Parallel Processing -->
+                        <div class="workflow-pattern">
+                            <h4>⚡ Parallel Processing</h4>
+                            <p>Run multiple independent calls simultaneously to save time.</p>
+                            <div class="workflow-diagram">
+                                <div class="parallel-container">
+                                    <div class="flow-step">Input Text</div>
+                                    <div class="parallel-branches">
+                                        <div class="parallel-branch">
+                                            <div class="flow-arrow">→</div>
+                                            <div class="flow-step">Summarize</div>
+                                        </div>
+                                        <div class="parallel-branch">
+                                            <div class="flow-arrow">→</div>
+                                            <div class="flow-step">Sentiment</div>
+                                        </div>
+                                        <div class="parallel-branch">
+                                            <div class="flow-arrow">→</div>
+                                            <div class="flow-step">Keywords</div>
+                                        </div>
+                                    </div>
+                                    <div class="flow-arrow">→</div>
+                                    <div class="flow-step">Combine Results</div>
+                                </div>
+                            </div>
+                            <div class="workflow-code">
+                                <strong>Python Example:</strong>
+                                <pre><code class="language-python">import asyncio
+from openai import AsyncOpenAI
+
+async_client = AsyncOpenAI()
+
+async def parallel_workflow(text):
+    # Define all tasks
+    tasks = [
+        async_client.chat.completions.create(
+            model="gpt-4",
+            messages=[{"role": "user", "content": f"Summarize:\n{text}"}]
+        ),
+        async_client.chat.completions.create(
+            model="gpt-4",
+            messages=[{"role": "user", "content": f"Sentiment:\n{text}"}]
+        ),
+        async_client.chat.completions.create(
+            model="gpt-4",
+            messages=[{"role": "user", "content": f"Keywords:\n{text}"}]
+        )
+    ]
+
+    # Run all in parallel
+    results = await asyncio.gather(*tasks)
+
+    return {
+        'summary': results[0].choices[0].message.content,
+        'sentiment': results[1].choices[0].message.content,
+        'keywords': results[2].choices[0].message.content
+    }
+
+# Usage
+asyncio.run(parallel_workflow("Your text here..."))</code></pre>
+                            </div>
+                        </div>
+
+                        <!-- Map-Reduce -->
+                        <div class="workflow-pattern">
+                            <h4>🗺️ Map-Reduce</h4>
+                            <p>Process large documents by splitting, analyzing parts in parallel, then combining.</p>
+                            <div class="workflow-diagram">
+                                <div class="flow-step">Large Document</div>
+                                <div class="flow-arrow">→</div>
+                                <div class="flow-step">Split into Chunks</div>
+                                <div class="flow-arrow">→</div>
+                                <div class="flow-step">Process Each (Parallel)</div>
+                                <div class="flow-arrow">→</div>
+                                <div class="flow-step">Combine Results</div>
+                            </div>
+                            <div class="workflow-code">
+                                <strong>Use Case:</strong> Summarizing a 50-page document that exceeds token limits.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Workflow Builder -->
+                <div class="workflow-builder">
+                    <h3>🛠️ Visual Workflow Builder</h3>
+                    <p>Design your workflow by dragging and connecting steps:</p>
+
+                    <div class="builder-canvas" id="workflowCanvas">
+                        <div class="canvas-toolbar">
+                            <button class="tool-btn" data-step="input">📥 Input</button>
+                            <button class="tool-btn" data-step="prompt">💬 Prompt</button>
+                            <button class="tool-btn" data-step="transform">🔄 Transform</button>
+                            <button class="tool-btn" data-step="condition">❓ Condition</button>
+                            <button class="tool-btn" data-step="output">📤 Output</button>
+                        </div>
+                        <div class="canvas-area" id="canvasArea">
+                            <p class="canvas-hint">Drag steps here to build your workflow</p>
+                        </div>
+                        <div class="canvas-actions">
+                            <button class="btn btn-secondary" onclick="clearWorkflow()">Clear</button>
+                            <button class="btn btn-primary" onclick="exportWorkflow()">📥 Export to Code</button>
+                        </div>
+                    </div>
+
+                    <div class="workflow-code-output hidden" id="workflowCode">
+                        <h4>Generated Code:</h4>
+                        <pre><code id="generatedCode"></code></pre>
+                        <button class="btn btn-sm btn-secondary" onclick="copyWorkflowCode()">📋 Copy</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 4: Custom GPTs -->
+            <section class="content-section" id="custom-gpts">
+                <div class="section-number">4</div>
+                <h2 class="section-title">Custom GPT Creation</h2>
+
+                <p>Custom GPTs allow you to create specialized AI assistants without coding. Perfect for recurring tasks with specific requirements.</p>
+
+                <div class="custom-gpt-guide">
+                    <h3>What Are Custom GPTs?</h3>
+                    <p>Custom GPTs are personalized versions of ChatGPT that you can create for specific purposes. They have:</p>
+                    <ul>
+                        <li><strong>Custom instructions:</strong> Define behavior and personality</li>
+                        <li><strong>Knowledge files:</strong> Upload documents for reference</li>
+                        <li><strong>Capabilities:</strong> Enable/disable web browsing, image generation, code execution</li>
+                        <li><strong>Actions:</strong> Connect to external APIs</li>
+                    </ul>
+                </div>
+
+                <!-- Step-by-Step Guide -->
+                <div class="gpt-creation-steps">
+                    <h3>📋 Step-by-Step Creation Guide</h3>
+
+                    <div class="creation-step">
+                        <div class="step-number">Step 1</div>
+                        <div class="step-content">
+                            <h4>Define Your Use Case</h4>
+                            <p>Be crystal clear about what problem your GPT solves.</p>
+                            <div class="step-example">
+                                <strong>Examples:</strong>
+                                <ul>
+                                    <li>Content Editor: Reviews blog posts for grammar, SEO, readability</li>
+                                    <li>Code Reviewer: Analyzes code for bugs, security, best practices</li>
+                                    <li>Recipe Generator: Creates recipes based on available ingredients</li>
+                                    <li>Interview Prep: Generates questions based on job description</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="creation-step">
+                        <div class="step-number">Step 2</div>
+                        <div class="step-content">
+                            <h4>Write Instructions</h4>
+                            <p>The "Instructions" field is like a permanent system prompt. Be specific!</p>
+                            <div class="step-template">
+                                <strong>Template:</strong>
+                                <pre><code>You are a [role] specialized in [domain].
+
+Your purpose is to [main goal].
+
+When users provide input, you should:
+1. [First action]
+2. [Second action]
+3. [Third action]
+
+Format your responses as:
+- [Format requirement 1]
+- [Format requirement 2]
+
+Constraints:
+- [Constraint 1]
+- [Constraint 2]
+
+Tone: [Professional/Friendly/Technical/etc.]
+</code></pre>
+                            </div>
+                            <div class="step-example">
+                                <strong>Real Example (Content Editor GPT):</strong>
+                                <pre><code>You are an expert content editor with 10 years of experience in digital publishing.
+
+Your purpose is to review and improve blog posts for clarity, engagement, and SEO.
+
+When users provide a blog post, you should:
+1. Identify grammar and spelling errors
+2. Suggest improvements for readability (Flesch score 60+)
+3. Optimize for SEO (keyword density, meta description)
+4. Enhance engagement (hooks, CTAs, scanability)
+
+Format your responses as:
+- Issue Summary (bullet points)
+- Detailed Feedback (section by section)
+- Revised Version (full edited text)
+- SEO Score (0-100 with explanation)
+
+Constraints:
+- Maintain the author's voice and style
+- Keep changes minimal but impactful
+- Explain why each change improves the content
+
+Tone: Constructive and encouraging
+</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="creation-step">
+                        <div class="step-number">Step 3</div>
+                        <div class="step-content">
+                            <h4>Upload Knowledge Files (Optional)</h4>
+                            <p>Provide reference documents your GPT can search and cite.</p>
+                            <div class="step-example">
+                                <strong>Good for:</strong>
+                                <ul>
+                                    <li>Company style guides</li>
+                                    <li>Product documentation</li>
+                                    <li>Brand guidelines</li>
+                                    <li>Legal templates</li>
+                                    <li>Research papers</li>
+                                </ul>
+                                <strong>Supported formats:</strong> PDF, DOCX, TXT, code files
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="creation-step">
+                        <div class="step-number">Step 4</div>
+                        <div class="step-content">
+                            <h4>Configure Capabilities</h4>
+                            <p>Enable features based on your GPT's needs:</p>
+                            <div class="capabilities-grid">
+                                <div class="capability">
+                                    <input type="checkbox" id="cap-web"><label for="cap-web"><strong>Web Browsing:</strong> For real-time info</label>
+                                </div>
+                                <div class="capability">
+                                    <input type="checkbox" id="cap-dalle"><label for="cap-dalle"><strong>Image Generation:</strong> Create visuals with DALL-E</label>
+                                </div>
+                                <div class="capability">
+                                    <input type="checkbox" id="cap-code"><label for="cap-code"><strong>Code Interpreter:</strong> Run Python, analyze data</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="creation-step">
+                        <div class="step-number">Step 5</div>
+                        <div class="step-content">
+                            <h4>Test & Iterate</h4>
+                            <p>Use the preview panel to test your GPT. Refine instructions based on results.</p>
+                            <div class="step-example">
+                                <strong>Testing Checklist:</strong>
+                                <ul>
+                                    <li>✓ Try edge cases and unexpected inputs</li>
+                                    <li>✓ Verify it follows all instructions</li>
+                                    <li>✓ Check if tone/style is consistent</li>
+                                    <li>✓ Ensure it doesn't hallucinate or make assumptions</li>
+                                    <li>✓ Test with real-world examples</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Configuration Templates -->
+                <div class="gpt-templates">
+                    <h3>📄 Configuration Templates</h3>
+                    <p>Ready-to-use templates for common custom GPTs:</p>
+
+                    <div class="template-grid" id="gptTemplates">
+                        <!-- Generated by JS -->
+                    </div>
+                </div>
+
+                <div class="exercise-box">
+                    <div class="exercise-header">
+                        <span class="exercise-badge">Exercise 6</span>
+                        <span class="exercise-time">30 minutes</span>
+                    </div>
+                    <h4>Create Your Custom GPT</h4>
+                    <p>Design a custom GPT for a specific task you regularly do. Write the full configuration including:</p>
+                    <ul>
+                        <li>Clear purpose and use case</li>
+                        <li>Detailed instructions (use the template)</li>
+                        <li>Conversation starters (3-5 examples)</li>
+                        <li>Capabilities needed</li>
+                    </ul>
+                    <p>Share your config or deploy it to test!</p>
+                </div>
+            </section>
+
+            <!-- Section 5: Project 4 -->
+            <section class="content-section" id="project-4">
+                <div class="section-number">5</div>
+                <h2 class="section-title">Project #4: AI-Powered Content Pipeline</h2>
+
+                <div class="project-intro">
+                    <p>Build a complete automated content pipeline that generates, edits, and optimizes blog posts. This is a real production tool you can use!</p>
+                    <div class="project-meta">
+                        <span>⏱️ 90 minutes</span>
+                        <span>🎯 Difficulty: Expert</span>
+                        <span>🏆 Earns "Automation Master" Badge</span>
+                    </div>
+                </div>
+
+                <div class="project-requirements">
+                    <h3>Pipeline Requirements</h3>
+                    <div class="requirements-grid">
+                        <div class="req-item">
+                            <strong>Input:</strong> Topic or keyword
+                        </div>
+                        <div class="req-item">
+                            <strong>Output:</strong> Publication-ready blog post
+                        </div>
+                        <div class="req-item">
+                            <strong>Format:</strong> Markdown with metadata
+                        </div>
+                        <div class="req-item">
+                            <strong>Features:</strong> SEO optimization, images, CTAs
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-pipeline">
+                    <h3>Pipeline Stages</h3>
+
+                    <div class="pipeline-stage">
+                        <div class="stage-header">
+                            <span class="stage-number">Stage 1</span>
+                            <h4>Research & Outline</h4>
+                        </div>
+                        <div class="stage-content">
+                            <p>Generate a comprehensive outline based on the topic.</p>
+                            <div class="stage-prompt">
+                                <strong>Prompt Template:</strong>
+                                <pre><code>You are an expert content strategist.
+
+Create a detailed blog post outline for: "[TOPIC]"
+
+Requirements:
+- Target audience: [AUDIENCE]
+- Article length: [LENGTH] words
+- Primary keyword: [KEYWORD]
+- Include 5-7 main sections
+- Each section should have 2-3 sub-points
+- Suggest attention-grabbing title options (3)
+
+Format as:
+1. Title Options
+2. Introduction Hook
+3. Main Sections (with sub-points)
+4. Conclusion & CTA
+5. SEO metadata (meta description, slug)</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pipeline-stage">
+                        <div class="stage-header">
+                            <span class="stage-number">Stage 2</span>
+                            <h4>Content Generation</h4>
+                        </div>
+                        <div class="stage-content">
+                            <p>Write the full article based on the approved outline.</p>
+                            <div class="stage-prompt">
+                                <strong>Prompt Template:</strong>
+                                <pre><code>Write a complete blog post using this outline:
+
+[PASTE OUTLINE]
+
+Writing guidelines:
+- Tone: [Professional/Casual/Technical]
+- Style: Conversational, easy to scan
+- Include examples and data where relevant
+- Use markdown formatting (headers, lists, bold)
+- Natural keyword integration: [KEYWORD]
+- Add internal link placeholders: [LINK: topic]
+- Include one compelling statistic per section
+
+Length: Aim for [TARGET] words
+
+Write the complete post now.</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pipeline-stage">
+                        <div class="stage-header">
+                            <span class="stage-number">Stage 3</span>
+                            <h4>SEO Optimization</h4>
+                        </div>
+                        <div class="stage-content">
+                            <p>Analyze and optimize for search engines.</p>
+                            <div class="stage-prompt">
+                                <strong>Prompt Template:</strong>
+                                <pre><code>Analyze this blog post for SEO:
+
+[PASTE ARTICLE]
+
+Primary keyword: [KEYWORD]
+Secondary keywords: [LIST]
+
+Provide:
+1. SEO Score (0-100)
+2. Keyword density analysis
+3. Readability score (Flesch)
+4. Missing SEO elements
+5. Specific improvements needed
+6. Optimized version of weak sections
+7. Meta description (155 chars)
+8. Title tag (60 chars)</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pipeline-stage">
+                        <div class="stage-header">
+                            <span class="stage-number">Stage 4</span>
+                            <h4>Image Suggestions</h4>
+                        </div>
+                        <div class="stage-content">
+                            <p>Generate image descriptions for designers/DALL-E.</p>
+                            <div class="stage-prompt">
+                                <strong>Prompt Template:</strong>
+                                <pre><code>Based on this blog post, suggest 5 custom images:
+
+[PASTE ARTICLE]
+
+For each image provide:
+- Placement (which section)
+- Purpose (hero, illustration, diagram, etc.)
+- DALL-E prompt (detailed description)
+- Alt text (SEO-optimized)
+- Caption
+
+Make images enhance understanding and engagement.</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pipeline-stage">
+                        <div class="stage-header">
+                            <span class="stage-number">Stage 5</span>
+                            <h4>Final Review & Polish</h4>
+                        </div>
+                        <div class="stage-content">
+                            <p>One last check for quality, consistency, and errors.</p>
+                            <div class="stage-prompt">
+                                <strong>Prompt Template:</strong>
+                                <pre><code>Perform final editorial review:
+
+[PASTE ARTICLE]
+
+Check for:
+1. Grammar and spelling
+2. Tone consistency
+3. Logical flow
+4. Fact accuracy
+5. Link validity
+6. CTA effectiveness
+7. Mobile readability
+
+Provide:
+- Issues found (if any)
+- Corrected version
+- Publication readiness score (0-100)
+- Final recommendations</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Implementation Code -->
+                <div class="project-implementation">
+                    <h3>🖥️ Full Implementation</h3>
+                    <p>Here's the complete Python script for your content pipeline:</p>
+
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span class="code-title">content_pipeline.py</span>
+                            <button class="copy-code-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code class="language-python">from openai import OpenAI
+import json
+import os
+from datetime import datetime
+
+client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
+
+class ContentPipeline:
+    def __init__(self, topic, audience, target_length=1500):
+        self.topic = topic
+        self.audience = audience
+        self.target_length = target_length
+        self.outline = None
+        self.content = None
+        self.seo_data = None
+
+    def stage1_outline(self):
+        """Generate comprehensive outline."""
+        prompt = f"""You are an expert content strategist.
+
+Create a detailed blog post outline for: "{self.topic}"
+
+Requirements:
+- Target audience: {self.audience}
+- Article length: {self.target_length} words
+- Include 5-7 main sections
+- Each section should have 2-3 sub-points
+- Suggest 3 attention-grabbing title options
+
+Format as JSON:
+{{
+    "titles": ["option1", "option2", "option3"],
+    "introduction": "hook text",
+    "sections": [
+        {{"title": "...", "sub_points": ["...", "..."]}}
+    ],
+    "conclusion": "summary",
+    "meta_description": "...",
+    "slug": "url-slug"
+}}"""
+
+        response = client.chat.completions.create(
+            model="gpt-4",
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0.7
+        )
+
+        self.outline = response.choices[0].message.content
+        return self.outline
+
+    def stage2_write(self):
+        """Write full content based on outline."""
+        if not self.outline:
+            self.stage1_outline()
+
+        prompt = f"""Write a complete blog post using this outline:
+
+{self.outline}
+
+Writing guidelines:
+- Tone: Professional but conversational
+- Style: Easy to scan with headers, lists, bold
+- Include examples and data
+- Use markdown formatting
+- Length: {self.target_length} words
+
+Write the complete post now."""
+
+        response = client.chat.completions.create(
+            model="gpt-4",
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0.7,
+            max_tokens=3000
+        )
+
+        self.content = response.choices[0].message.content
+        return self.content
+
+    def stage3_seo_optimize(self):
+        """Analyze and optimize for SEO."""
+        if not self.content:
+            self.stage2_write()
+
+        prompt = f"""Analyze this blog post for SEO:
+
+{self.content}
+
+Provide as JSON:
+{{
+    "seo_score": 0-100,
+    "readability_score": 0-100,
+    "keyword_density": "...",
+    "issues": ["issue1", "issue2"],
+    "meta_description": "155 chars",
+    "title_tag": "60 chars",
+    "improvements": ["suggestion1", "suggestion2"]
+}}"""
+
+        response = client.chat.completions.create(
+            model="gpt-4",
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0.3
+        )
+
+        self.seo_data = response.choices[0].message.content
+        return self.seo_data
+
+    def stage4_images(self):
+        """Generate image suggestions."""
+        prompt = f"""Based on this blog post, suggest 3 images:
+
+{self.content}
+
+For each provide JSON:
+{{
+    "images": [
+        {{
+            "placement": "section name",
+            "purpose": "hero/illustration/diagram",
+            "dalle_prompt": "detailed description for image generation",
+            "alt_text": "SEO-optimized alt text"
+        }}
+    ]
+}}"""
+
+        response = client.chat.completions.create(
+            model="gpt-4",
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0.7
+        )
+
+        return response.choices[0].message.content
+
+    def stage5_final_review(self):
+        """Final editorial review."""
+        prompt = f"""Perform final editorial review:
+
+{self.content}
+
+Check grammar, flow, accuracy. Provide:
+- Issues found
+- Publication readiness score (0-100)
+- Any final tweaks needed
+
+Keep response concise."""
+
+        response = client.chat.completions.create(
+            model="gpt-4",
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0.3
+        )
+
+        return response.choices[0].message.content
+
+    def run_full_pipeline(self, save_to_file=True):
+        """Execute entire pipeline and save results."""
+        print("🚀 Starting content pipeline...")
+
+        print("\n📝 Stage 1: Generating outline...")
+        self.stage1_outline()
+        print("✅ Outline complete")
+
+        print("\n✍️ Stage 2: Writing content...")
+        self.stage2_write()
+        print("✅ Content written")
+
+        print("\n🔍 Stage 3: SEO optimization...")
+        self.stage3_seo_optimize()
+        print("✅ SEO analyzed")
+
+        print("\n🖼️ Stage 4: Image suggestions...")
+        images = self.stage4_images()
+        print("✅ Images suggested")
+
+        print("\n👀 Stage 5: Final review...")
+        review = self.stage5_final_review()
+        print("✅ Review complete")
+
+        # Compile results
+        results = {
+            "topic": self.topic,
+            "generated_at": datetime.now().isoformat(),
+            "outline": self.outline,
+            "content": self.content,
+            "seo_data": self.seo_data,
+            "images": images,
+            "final_review": review
+        }
+
+        if save_to_file:
+            filename = f"blog_{self.topic.replace(' ', '_').lower()}_{datetime.now().strftime('%Y%m%d')}.json"
+            with open(filename, 'w') as f:
+                json.dump(results, f, indent=2)
+            print(f"\n💾 Saved to: {filename}")
+
+        return results
+
+# Usage Example
+if __name__ == "__main__":
+    pipeline = ContentPipeline(
+        topic="The Future of AI in Healthcare",
+        audience="Healthcare professionals and tech enthusiasts",
+        target_length=2000
+    )
+
+    results = pipeline.run_full_pipeline()
+    print("\n🎉 Pipeline complete! Check the generated file.")
+</code></pre>
+                    </div>
+                </div>
+
+                <div class="exercise-box">
+                    <div class="exercise-header">
+                        <span class="exercise-badge">Final Project</span>
+                        <span class="exercise-time">90 minutes</span>
+                    </div>
+                    <h4>Build and Test Your Pipeline</h4>
+                    <ol>
+                        <li>Copy the code above and set up your environment</li>
+                        <li>Run the pipeline with your own topic</li>
+                        <li>Review the generated content - what worked well?</li>
+                        <li>Customize the prompts to match your needs</li>
+                        <li>Add at least one new stage (e.g., social media posts, email newsletter)</li>
+                    </ol>
+                    <p><strong>Bonus:</strong> Deploy this as a web app or CLI tool!</p>
+                </div>
+            </section>
+
+            <!-- Section 6: Performance Optimization -->
+            <section class="content-section" id="optimization">
+                <div class="section-number">6</div>
+                <h2 class="section-title">Performance Optimization</h2>
+
+                <p>Learn to benchmark, test, and optimize your prompts for the best speed/quality tradeoff.</p>
+
+                <div class="optimization-framework">
+                    <h3>The Optimization Framework</h3>
+
+                    <div class="framework-steps">
+                        <div class="opt-step">
+                            <strong>1. Measure Baseline</strong>
+                            <p>Track response time, quality score, and token usage for your current prompts.</p>
+                        </div>
+                        <div class="opt-step">
+                            <strong>2. Identify Bottlenecks</strong>
+                            <p>Which stage is slowest? Where do errors occur? What costs most?</p>
+                        </div>
+                        <div class="opt-step">
+                            <strong>3. Test Variations</strong>
+                            <p>Create 3-5 prompt variations. A/B test them with real inputs.</p>
+                        </div>
+                        <div class="opt-step">
+                            <strong>4. Analyze Results</strong>
+                            <p>Compare speed, quality, cost. Choose the optimal version.</p>
+                        </div>
+                        <div class="opt-step">
+                            <strong>5. Monitor Production</strong>
+                            <p>Track metrics over time. Continuously improve based on real usage.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="callout callout-success">
+                    <strong>🏆 Congratulations!</strong> You've completed the Expert module. You now have the skills to build production-ready AI tools and workflows. Keep practicing, and remember: the best prompt engineers never stop experimenting!
+                </div>
+            </section>
+
+            <!-- Completion & Certificate -->
+            <section class="completion-section">
+                <div class="completion-card certificate-card">
+                    <h3>🎓 Course Completion</h3>
+                    <p>You've mastered all three modules! Generate your certificate of completion:</p>
+                    <button class="btn btn-success btn-large" onclick="generateCertificate()">🏅 Generate Certificate</button>
+                    <div class="completion-stats">
+                        <div class="stat-item">
+                            <span class="stat-label">Modules Completed:</span>
+                            <span class="stat-value">3/3</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Exercises Done:</span>
+                            <span class="stat-value" id="exerciseCount">0/50+</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Badges Earned:</span>
+                            <span class="stat-value" id="badgeCount">0/12</span>
+                        </div>
+                    </div>
+                    <a href="index.html" class="btn btn-secondary">Return to Dashboard</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-nav">
+                <a href="intermediate.html" class="btn btn-secondary">← Back: Intermediate</a>
+                <a href="playground.html" class="btn btn-primary">Practice in Playground →</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/prompts.js"></script>
+    <script src="js/simulator.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            initExpert();
+        });
+    </script>
+</body>
+</html>
