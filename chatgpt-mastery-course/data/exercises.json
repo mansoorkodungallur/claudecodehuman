@@ -1,0 +1,257 @@
+{
+  "beginner": [
+    {
+      "id": "b_ex1",
+      "title": "Your First Prompt",
+      "description": "Write a clear, specific prompt asking ChatGPT to explain a concept you're curious about.",
+      "difficulty": "Beginner",
+      "estimatedTime": 5,
+      "instructions": "Choose any topic and craft a prompt that includes: what you want explained, how detailed the explanation should be, and any specific examples you'd like.",
+      "successCriteria": [
+        "Prompt is clear and specific",
+        "Includes desired level of detail",
+        "Has context or constraints"
+      ],
+      "hints": [
+        "Start with 'Explain...'",
+        "Add 'in simple terms' or 'with examples'",
+        "Specify if you want analogies"
+      ],
+      "category": "fundamentals"
+    },
+    {
+      "id": "b_ex2",
+      "title": "Fix the Vague Prompt",
+      "description": "Improve a poorly written prompt by adding specificity and structure.",
+      "difficulty": "Beginner",
+      "estimatedTime": 10,
+      "instructions": "Given prompt: 'Tell me about dogs'. Rewrite it to be specific, clear, and likely to produce useful results.",
+      "successCriteria": [
+        "Narrows down the topic",
+        "Adds specific requirements",
+        "Defines desired format"
+      ],
+      "exampleSolution": "Explain the top 5 dog breeds suitable for apartment living, including their temperament, exercise needs, and typical size. Format as a numbered list with brief descriptions.",
+      "category": "prompt_improvement"
+    },
+    {
+      "id": "b_ex3",
+      "title": "Context is King",
+      "description": "Practice adding context to make prompts more effective.",
+      "difficulty": "Beginner",
+      "estimatedTime": 10,
+      "instructions": "Write three versions of a prompt asking for recipe suggestions: 1) No context, 2) Some context, 3) Rich context. Compare the difference.",
+      "successCriteria": [
+        "Version 1 is basic",
+        "Version 2 adds some constraints",
+        "Version 3 includes detailed requirements"
+      ],
+      "category": "context"
+    }
+  ],
+  "intermediate": [
+    {
+      "id": "i_ex1",
+      "title": "RTFC Framework Practice",
+      "description": "Apply the RTFC (Role, Task, Format, Constraints) framework to create a professional prompt.",
+      "difficulty": "Intermediate",
+      "estimatedTime": 15,
+      "instructions": "Create a complete RTFC prompt for: generating social media content for a new coffee shop opening. Include all four elements explicitly.",
+      "successCriteria": [
+        "Clearly defines Role",
+        "Specific Task description",
+        "Explicit Format requirements",
+        "Meaningful Constraints"
+      ],
+      "category": "frameworks"
+    },
+    {
+      "id": "i_ex2",
+      "title": "Chain-of-Thought Reasoning",
+      "description": "Write a prompt that uses chain-of-thought to solve a complex problem.",
+      "difficulty": "Intermediate",
+      "estimatedTime": 20,
+      "instructions": "Create a prompt that asks ChatGPT to solve a multi-step business problem using explicit reasoning steps.",
+      "successCriteria": [
+        "Asks for step-by-step thinking",
+        "Includes verification at each step",
+        "Requests final synthesis"
+      ],
+      "category": "patterns"
+    },
+    {
+      "id": "i_ex3",
+      "title": "Few-Shot Learning",
+      "description": "Provide examples to teach ChatGPT a specific output pattern.",
+      "difficulty": "Intermediate",
+      "estimatedTime": 20,
+      "instructions": "Create a few-shot prompt with 3 examples that teach ChatGPT to transform product features into benefit-focused bullet points.",
+      "successCriteria": [
+        "Includes 3 clear examples",
+        "Examples show consistent pattern",
+        "New input provided for completion"
+      ],
+      "category": "patterns"
+    },
+    {
+      "id": "i_ex4",
+      "title": "Prompt Battle",
+      "description": "Create two different prompts for the same task and compare results.",
+      "difficulty": "Intermediate",
+      "estimatedTime": 25,
+      "instructions": "Write two prompts asking for blog post ideas: Version A uses direct instruction, Version B uses role-playing. Test both and analyze which works better.",
+      "successCriteria": [
+        "Both prompts aim for same goal",
+        "Different techniques used",
+        "Analysis of results provided"
+      ],
+      "category": "optimization"
+    },
+    {
+      "id": "i_ex5",
+      "title": "Constraint Challenge",
+      "description": "Practice using constraints to shape outputs.",
+      "difficulty": "Intermediate",
+      "estimatedTime": 15,
+      "instructions": "Write a prompt with at least 5 different types of constraints (length, tone, format, audience, style) for creating an email.",
+      "successCriteria": [
+        "5+ distinct constraints",
+        "Constraints are specific and measurable",
+        "Constraints work together coherently"
+      ],
+      "category": "advanced_techniques"
+    }
+  ],
+  "expert": [
+    {
+      "id": "e_ex1",
+      "title": "Build an API Wrapper",
+      "description": "Write Python code that wraps the OpenAI API with custom error handling and retry logic.",
+      "difficulty": "Expert",
+      "estimatedTime": 45,
+      "instructions": "Create a Python class that handles API calls, implements exponential backoff, caches responses, and logs all interactions.",
+      "successCriteria": [
+        "Proper error handling",
+        "Retry logic with backoff",
+        "Response caching",
+        "Logging implementation"
+      ],
+      "category": "api_integration"
+    },
+    {
+      "id": "e_ex2",
+      "title": "Token Optimization Challenge",
+      "description": "Reduce a verbose prompt by 50% while maintaining effectiveness.",
+      "difficulty": "Expert",
+      "estimatedTime": 30,
+      "instructions": "Take a 500-token prompt and rewrite it to use only 250 tokens. Test both versions and compare quality of outputs.",
+      "successCriteria": [
+        "50% token reduction achieved",
+        "Core requirements preserved",
+        "Quality remains high"
+      ],
+      "category": "optimization"
+    },
+    {
+      "id": "e_ex3",
+      "title": "Workflow Pipeline",
+      "description": "Design a multi-stage prompt workflow for a complex task.",
+      "difficulty": "Expert",
+      "estimatedTime": 60,
+      "instructions": "Create a 5-stage workflow for generating market research reports: 1) Research, 2) Analysis, 3) Synthesis, 4) Formatting, 5) Review. Provide prompts for each stage.",
+      "successCriteria": [
+        "5 distinct stages defined",
+        "Prompts for each stage",
+        "Data flow between stages explained",
+        "Error handling included"
+      ],
+      "category": "automation"
+    },
+    {
+      "id": "e_ex4",
+      "title": "Custom GPT Configuration",
+      "description": "Design a complete Custom GPT for a specific professional use case.",
+      "difficulty": "Expert",
+      "estimatedTime": 45,
+      "instructions": "Create full configuration for a Custom GPT that serves as a code review assistant. Include instructions, conversation starters, and capabilities.",
+      "successCriteria": [
+        "Detailed system instructions",
+        "5+ conversation starters",
+        "Clear behavior guidelines",
+        "Appropriate capabilities selected"
+      ],
+      "category": "custom_gpts"
+    },
+    {
+      "id": "e_ex5",
+      "title": "Production Content Pipeline",
+      "description": "Build a complete automated content generation system.",
+      "difficulty": "Expert",
+      "estimatedTime": 90,
+      "instructions": "Implement the full content pipeline from the course: outline → draft → SEO optimize → generate images → final review. Make it production-ready with error handling and logging.",
+      "successCriteria": [
+        "All 5 stages implemented",
+        "Error handling at each stage",
+        "Progress tracking",
+        "Output quality validation",
+        "File export functionality"
+      ],
+      "category": "projects"
+    }
+  ],
+  "safetyScenarios": [
+    {
+      "id": "s1",
+      "scenario": "Sharing your work email and password to get help organizing your inbox",
+      "safe": false,
+      "explanation": "Never share passwords or sensitive credentials with AI systems. They could be exposed or misused."
+    },
+    {
+      "id": "s2",
+      "scenario": "Asking ChatGPT to help you understand a medical diagnosis your doctor gave you",
+      "safe": true,
+      "explanation": "It's OK to seek understanding, but always verify medical information with healthcare professionals. Don't use it for diagnosis."
+    },
+    {
+      "id": "s3",
+      "scenario": "Having ChatGPT write your entire college essay and submitting it as your own work",
+      "safe": false,
+      "explanation": "This violates academic integrity. Use AI as a learning tool and writing assistant, not to generate work you claim as your own."
+    },
+    {
+      "id": "s4",
+      "scenario": "Asking for help understanding a programming concept for your class",
+      "safe": true,
+      "explanation": "Using AI to learn and understand concepts is great! Just make sure you actually understand the material."
+    },
+    {
+      "id": "s5",
+      "scenario": "Pasting your company's confidential strategy document to get a summary",
+      "safe": false,
+      "explanation": "Don't share confidential, proprietary, or sensitive business information. It could be stored or leaked."
+    }
+  ],
+  "promptFixExercises": [
+    {
+      "id": "pf1",
+      "badPrompt": "Write something about space",
+      "issues": ["Too vague", "No format specified", "No audience defined", "No specific topic"],
+      "fixedPrompt": "Write a 500-word article about black holes for high school students. Explain what they are, how they form, and why they matter to astronomy. Use simple language and include one real-world example.",
+      "improvements": ["Specific topic (black holes)", "Defined audience (high school students)", "Clear format (500-word article)", "Specific requirements (what to cover)"]
+    },
+    {
+      "id": "pf2",
+      "badPrompt": "Fix this code",
+      "issues": ["No code provided", "No language specified", "No problem described"],
+      "fixedPrompt": "This Python function should reverse a string but returns an error. Find the bug and provide the corrected version with an explanation:\n\ndef reverse_string(s):\n    return s[-1:0]\n\nprint(reverse_string('hello'))",
+      "improvements": ["Language specified (Python)", "Code included", "Expected behavior described", "Specific request (find bug + explain)"]
+    },
+    {
+      "id": "pf3",
+      "badPrompt": "Give me marketing advice",
+      "issues": ["No context about business", "No specific challenge", "No goals defined", "Too broad"],
+      "fixedPrompt": "I run a small local bakery and want to increase weekend foot traffic by 30%. Our target customers are families and young professionals aged 25-45. Suggest 5 low-cost marketing tactics with specific implementation steps for each.",
+      "improvements": ["Business context provided", "Specific goal (30% increase)", "Target audience defined", "Constraints noted (low-cost)", "Specific deliverable (5 tactics with steps)"]
+    }
+  ]
+}

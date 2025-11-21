@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playground - ChatGPT Mastery Course</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="main-nav" id="mainNav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h1>ChatGPT Mastery</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="beginner.html">Beginner</a></li>
+                <li><a href="intermediate.html">Intermediate</a></li>
+                <li><a href="expert.html">Expert</a></li>
+                <li><a href="playground.html" class="active">Playground</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                <span class="theme-icon">🌙</span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="playground-container">
+        <!-- Sidebar -->
+        <aside class="playground-sidebar">
+            <div class="sidebar-header">
+                <h2>Prompt Playground</h2>
+                <button class="btn btn-sm btn-primary" id="newChatBtn">+ New Chat</button>
+            </div>
+
+            <!-- Saved Sessions -->
+            <div class="saved-sessions">
+                <h3>Saved Sessions</h3>
+                <div class="session-list" id="sessionList">
+                    <div class="empty-state">No saved sessions yet</div>
+                </div>
+            </div>
+
+            <!-- Persona Selector -->
+            <div class="persona-selector">
+                <h3>AI Persona</h3>
+                <select id="personaSelect" class="persona-select">
+                    <option value="default">Default Assistant</option>
+                    <option value="creative">Creative Writer</option>
+                    <option value="precise">Precise & Technical</option>
+                    <option value="teacher">Patient Teacher</option>
+                    <option value="developer">Code Expert</option>
+                    <option value="analyst">Data Analyst</option>
+                    <option value="marketer">Marketing Guru</option>
+                </select>
+                <p class="persona-description" id="personaDescription">Helpful, balanced, and versatile assistant.</p>
+            </div>
+
+            <!-- Settings Panel -->
+            <div class="settings-panel">
+                <h3>Settings</h3>
+
+                <div class="setting-item">
+                    <label for="temperature">
+                        <strong>Temperature:</strong> <span id="tempValue">0.7</span>
+                        <button class="info-btn" data-tooltip="Controls randomness. Higher = more creative, lower = more focused">ℹ️</button>
+                    </label>
+                    <input type="range" id="temperature" min="0" max="2" step="0.1" value="0.7">
+                    <div class="range-labels">
+                        <span>Precise (0)</span>
+                        <span>Balanced (1)</span>
+                        <span>Creative (2)</span>
+                    </div>
+                </div>
+
+                <div class="setting-item">
+                    <label for="maxTokens">
+                        <strong>Max Tokens:</strong> <span id="maxTokensValue">500</span>
+                        <button class="info-btn" data-tooltip="Maximum response length. ~4 characters per token">ℹ️</button>
+                    </label>
+                    <input type="range" id="maxTokens" min="50" max="2000" step="50" value="500">
+                    <div class="range-labels">
+                        <span>Short (50)</span>
+                        <span>Long (2000)</span>
+                    </div>
+                </div>
+
+                <div class="setting-item">
+                    <label>
+                        <input type="checkbox" id="showTokenCount">
+                        <span>Show token count</span>
+                    </label>
+                </div>
+
+                <div class="setting-item">
+                    <label>
+                        <input type="checkbox" id="typingAnimation" checked>
+                        <span>Typing animation</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Quick Templates -->
+            <div class="quick-templates">
+                <h3>Quick Templates</h3>
+                <button class="template-btn" data-template="summarize">📄 Summarize Text</button>
+                <button class="template-btn" data-template="explain">🎓 Explain Concept</button>
+                <button class="template-btn" data-template="code">💻 Debug Code</button>
+                <button class="template-btn" data-template="brainstorm">💡 Brainstorm Ideas</button>
+                <button class="template-btn" data-template="email">✉️ Write Email</button>
+            </div>
+        </aside>
+
+        <!-- Main Chat Area -->
+        <main class="playground-main">
+            <!-- Chat Header -->
+            <div class="chat-header">
+                <div class="chat-info">
+                    <h2 id="chatTitle">New Conversation</h2>
+                    <div class="chat-meta">
+                        <span id="messageCount">0 messages</span>
+                        <span id="tokenUsage" class="hidden">0 tokens used</span>
+                    </div>
+                </div>
+                <div class="chat-actions">
+                    <button class="btn btn-sm btn-secondary" id="saveSessionBtn">💾 Save</button>
+                    <button class="btn btn-sm btn-secondary" id="exportBtn">📥 Export</button>
+                    <button class="btn btn-sm btn-secondary" id="clearBtn">🗑️ Clear</button>
+                </div>
+            </div>
+
+            <!-- Messages Container -->
+            <div class="messages-container" id="messagesContainer">
+                <div class="welcome-message">
+                    <div class="welcome-icon">👋</div>
+                    <h2>Welcome to the Playground!</h2>
+                    <p>This is a safe space to practice prompting with a simulated ChatGPT. Try different approaches, experiment with settings, and learn from the responses.</p>
+                    <div class="welcome-features">
+                        <div class="feature-item">
+                            <strong>🎭 Multiple Personas</strong>
+                            <p>Try different AI personalities</p>
+                        </div>
+                        <div class="feature-item">
+                            <strong>⚙️ Adjustable Settings</strong>
+                            <p>See how temperature affects responses</p>
+                        </div>
+                        <div class="feature-item">
+                            <strong>💾 Save & Compare</strong>
+                            <p>Save sessions and test variations</p>
+                        </div>
+                    </div>
+                    <p class="welcome-cta">Type your first prompt below to get started!</p>
+                </div>
+            </div>
+
+            <!-- Input Area -->
+            <div class="input-container">
+                <div class="input-wrapper">
+                    <textarea
+                        id="promptInput"
+                        placeholder="Message ChatGPT..."
+                        rows="1"
+                        maxlength="4000"
+                    ></textarea>
+                    <button class="send-btn" id="sendBtn" disabled>
+                        <span class="send-icon">↑</span>
+                    </button>
+                </div>
+                <div class="input-footer">
+                    <div class="char-count">
+                        <span id="charCount">0</span> / 4000 characters
+                    </div>
+                    <div class="input-tips">
+                        <span>Press <kbd>Enter</kbd> to send, <kbd>Shift+Enter</kbd> for new line</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Comparison Panel (hidden by default) -->
+        <aside class="comparison-panel hidden" id="comparisonPanel">
+            <div class="comparison-header">
+                <h3>Response Comparison</h3>
+                <button class="close-comparison" id="closeComparison">✕</button>
+            </div>
+            <div class="comparison-content" id="comparisonContent">
+                <!-- Populated when comparing responses -->
+            </div>
+        </aside>
+    </div>
+
+    <!-- Export Modal -->
+    <div class="modal hidden" id="exportModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Export Conversation</h3>
+                <button class="modal-close" onclick="closeModal('exportModal')">✕</button>
+            </div>
+            <div class="modal-body">
+                <p>Choose export format:</p>
+                <div class="export-options">
+                    <button class="btn btn-secondary btn-block" onclick="exportAs('txt')">📄 Plain Text (.txt)</button>
+                    <button class="btn btn-secondary btn-block" onclick="exportAs('json')">📋 JSON (.json)</button>
+                    <button class="btn btn-secondary btn-block" onclick="exportAs('md')">📝 Markdown (.md)</button>
+                    <button class="btn btn-secondary btn-block" onclick="exportAs('html')">🌐 HTML (.html)</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Save Session Modal -->
+    <div class="modal hidden" id="saveModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Save Session</h3>
+                <button class="modal-close" onclick="closeModal('saveModal')">✕</button>
+            </div>
+            <div class="modal-body">
+                <label for="sessionName"><strong>Session Name:</strong></label>
+                <input type="text" id="sessionName" placeholder="e.g., Content Strategy Practice" class="input-field">
+
+                <label for="sessionTags"><strong>Tags (optional):</strong></label>
+                <input type="text" id="sessionTags" placeholder="e.g., writing, SEO, practice" class="input-field">
+
+                <div class="modal-actions">
+                    <button class="btn btn-secondary" onclick="closeModal('saveModal')">Cancel</button>
+                    <button class="btn btn-primary" onclick="saveSession()">Save Session</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Template Modal -->
+    <div class="modal hidden" id="templateModal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h3 id="templateTitle">Template</h3>
+                <button class="modal-close" onclick="closeModal('templateModal')">✕</button>
+            </div>
+            <div class="modal-body">
+                <div id="templateForm">
+                    <!-- Dynamically populated based on template -->
+                </div>
+                <div class="modal-actions">
+                    <button class="btn btn-secondary" onclick="closeModal('templateModal')">Cancel</button>
+                    <button class="btn btn-primary" onclick="useTemplate()">Use Template</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Action Menu -->
+    <div class="floating-menu">
+        <button class="fab-main" id="fabMain">⚡</button>
+        <div class="fab-menu hidden" id="fabMenu">
+            <button class="fab-item" data-action="compare" title="Compare Responses">
+                <span>📊</span>
+            </button>
+            <button class="fab-item" data-action="analyze" title="Analyze Prompt">
+                <span>🔍</span>
+            </button>
+            <button class="fab-item" data-action="improve" title="Improve Prompt">
+                <span>✨</span>
+            </button>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/prompts.js"></script>
+    <script src="js/simulator.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            initPlayground();
+        });
+    </script>
+</body>
+</html>

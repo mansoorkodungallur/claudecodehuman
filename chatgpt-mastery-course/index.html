@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatGPT Mastery Course - From Beginner to Expert</title>
+    <meta name="description" content="Learn ChatGPT through hands-on exercises. Progress from beginner to expert with interactive prompts and real-world projects.">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="main-nav" id="mainNav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h1>ChatGPT Mastery</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Dashboard</a></li>
+                <li><a href="beginner.html" class="nav-locked" id="nav-beginner">Beginner</a></li>
+                <li><a href="intermediate.html" class="nav-locked" id="nav-intermediate">Intermediate</a></li>
+                <li><a href="expert.html" class="nav-locked" id="nav-expert">Expert</a></li>
+                <li><a href="playground.html">Playground</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                <span class="theme-icon">🌙</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h2 class="hero-title">Master ChatGPT Through Practice</h2>
+            <p class="hero-subtitle">Learn by doing. Progress from complete beginner to AI automation expert with 100+ hands-on exercises.</p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">12</span>
+                    <span class="stat-label">Hours of Content</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">100+</span>
+                    <span class="stat-label">Prompts to Master</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">10</span>
+                    <span class="stat-label">Real Projects</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skill Assessment -->
+    <section class="assessment-section" id="assessmentSection">
+        <div class="container">
+            <div class="section-header">
+                <h2>Find Your Starting Point</h2>
+                <p>Take this 10-question assessment to determine your skill level and unlock the right path.</p>
+            </div>
+
+            <div class="assessment-card" id="assessmentCard">
+                <div class="assessment-intro" id="assessmentIntro">
+                    <div class="assessment-icon">📊</div>
+                    <h3>Skill Assessment Quiz</h3>
+                    <p>Answer 10 questions honestly to get placed at the right level. Takes about 5 minutes.</p>
+                    <button class="btn btn-primary btn-large" id="startAssessment">Start Assessment</button>
+                </div>
+
+                <div class="assessment-quiz hidden" id="assessmentQuiz">
+                    <div class="quiz-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="quizProgress"></div>
+                        </div>
+                        <span class="progress-text" id="quizProgressText">Question 1 of 10</span>
+                    </div>
+
+                    <div class="quiz-question" id="quizQuestion">
+                        <h3 class="question-text" id="questionText"></h3>
+                        <div class="quiz-options" id="quizOptions"></div>
+                    </div>
+
+                    <div class="quiz-navigation">
+                        <button class="btn btn-secondary" id="prevQuestion" disabled>Previous</button>
+                        <button class="btn btn-primary" id="nextQuestion" disabled>Next Question</button>
+                    </div>
+                </div>
+
+                <div class="assessment-results hidden" id="assessmentResults">
+                    <div class="results-icon" id="resultsIcon">🎯</div>
+                    <h3 id="resultsTitle">Your Skill Level: Intermediate</h3>
+                    <p class="results-description" id="resultsDescription"></p>
+                    <div class="results-score">
+                        <span class="score-label">Your Score:</span>
+                        <span class="score-value" id="scoreValue">0/10</span>
+                    </div>
+                    <div class="results-actions">
+                        <button class="btn btn-primary btn-large" id="startLearning">Start Learning</button>
+                        <button class="btn btn-secondary" id="retakeAssessment">Retake Assessment</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Progress Dashboard -->
+    <section class="progress-section" id="progressSection">
+        <div class="container">
+            <div class="section-header">
+                <h2>Your Learning Progress</h2>
+                <p>Track your journey from beginner to expert</p>
+            </div>
+
+            <div class="overall-progress">
+                <div class="progress-circle" id="overallProgress">
+                    <svg viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="45" class="progress-bg"></circle>
+                        <circle cx="50" cy="50" r="45" class="progress-bar-circle" id="progressCircle"></circle>
+                    </svg>
+                    <div class="progress-text">
+                        <span class="progress-percentage" id="overallPercentage">0%</span>
+                        <span class="progress-label">Complete</span>
+                    </div>
+                </div>
+                <div class="progress-details">
+                    <h3>Overall Course Progress</h3>
+                    <div class="progress-breakdown">
+                        <div class="breakdown-item">
+                            <span class="breakdown-label">Exercises Completed</span>
+                            <span class="breakdown-value" id="exercisesCompleted">0/50+</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="breakdown-label">Badges Earned</span>
+                            <span class="breakdown-value" id="badgesEarned">0/12</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="breakdown-label">Time Invested</span>
+                            <span class="breakdown-value" id="timeInvested">0h 0m</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learning Paths -->
+    <section class="paths-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Choose Your Path</h2>
+                <p>Three progressive modules designed to take you from zero to hero</p>
+            </div>
+
+            <div class="learning-paths">
+                <!-- Beginner Path -->
+                <div class="path-card" data-level="beginner">
+                    <div class="path-header">
+                        <div class="path-icon">🌱</div>
+                        <div class="path-level">Module 1</div>
+                    </div>
+                    <h3 class="path-title">Beginner: First Steps</h3>
+                    <p class="path-description">Learn the fundamentals of ChatGPT. Perfect for complete beginners who have never used AI before.</p>
+                    <div class="path-meta">
+                        <span class="meta-item">⏱️ 2 hours</span>
+                        <span class="meta-item">📝 15 exercises</span>
+                        <span class="meta-item">🏆 4 badges</span>
+                    </div>
+                    <div class="path-topics">
+                        <span class="topic-tag">ChatGPT Basics</span>
+                        <span class="topic-tag">Safety & Ethics</span>
+                        <span class="topic-tag">First Prompts</span>
+                        <span class="topic-tag">Common Errors</span>
+                    </div>
+                    <div class="path-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="beginnerProgress" style="width: 0%"></div>
+                        </div>
+                        <span class="progress-label" id="beginnerProgressLabel">Not Started</span>
+                    </div>
+                    <a href="beginner.html" class="btn btn-primary btn-block" id="beginnerBtn">Start Beginner Path</a>
+                </div>
+
+                <!-- Intermediate Path -->
+                <div class="path-card" data-level="intermediate">
+                    <div class="path-header">
+                        <div class="path-icon">🚀</div>
+                        <div class="path-level">Module 2</div>
+                    </div>
+                    <div class="path-lock" id="intermediateLock">
+                        <span class="lock-icon">🔒</span>
+                        <span class="lock-text">Complete Beginner first</span>
+                    </div>
+                    <h3 class="path-title">Intermediate: Prompt Craftsmanship</h3>
+                    <p class="path-description">Master prompt engineering techniques. Learn frameworks and patterns used by professionals.</p>
+                    <div class="path-meta">
+                        <span class="meta-item">⏱️ 4 hours</span>
+                        <span class="meta-item">📝 20 exercises</span>
+                        <span class="meta-item">🏆 4 badges</span>
+                    </div>
+                    <div class="path-topics">
+                        <span class="topic-tag">RTFC Framework</span>
+                        <span class="topic-tag">Advanced Patterns</span>
+                        <span class="topic-tag">Prompt Analysis</span>
+                        <span class="topic-tag">12 Use Cases</span>
+                    </div>
+                    <div class="path-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="intermediateProgress" style="width: 0%"></div>
+                        </div>
+                        <span class="progress-label" id="intermediateProgressLabel">Locked</span>
+                    </div>
+                    <button class="btn btn-primary btn-block" id="intermediateBtn" disabled>Locked</button>
+                </div>
+
+                <!-- Expert Path -->
+                <div class="path-card" data-level="expert">
+                    <div class="path-header">
+                        <div class="path-icon">⚡</div>
+                        <div class="path-level">Module 3</div>
+                    </div>
+                    <div class="path-lock" id="expertLock">
+                        <span class="lock-icon">🔒</span>
+                        <span class="lock-text">Complete Intermediate first</span>
+                    </div>
+                    <h3 class="path-title">Expert: Advanced Automation</h3>
+                    <p class="path-description">Build AI-powered tools. API integration, custom GPTs, and production workflows.</p>
+                    <div class="path-meta">
+                        <span class="meta-item">⏱️ 6 hours</span>
+                        <span class="meta-item">📝 20 exercises</span>
+                        <span class="meta-item">🏆 4 badges</span>
+                    </div>
+                    <div class="path-topics">
+                        <span class="topic-tag">API Integration</span>
+                        <span class="topic-tag">Token Management</span>
+                        <span class="topic-tag">Custom GPTs</span>
+                        <span class="topic-tag">Production Tools</span>
+                    </div>
+                    <div class="path-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="expertProgress" style="width: 0%"></div>
+                        </div>
+                        <span class="progress-label" id="expertProgressLabel">Locked</span>
+                    </div>
+                    <button class="btn btn-primary btn-block" id="expertBtn" disabled>Locked</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Practice -->
+    <section class="quick-practice-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Daily Quick Practice</h2>
+                <p>Sharpen your skills with 5 rotating prompts. New challenges daily!</p>
+            </div>
+
+            <div class="quick-practice-grid" id="quickPracticeGrid">
+                <!-- Generated by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Badges Section -->
+    <section class="badges-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Achievement Badges</h2>
+                <p>Unlock badges as you progress through your learning journey</p>
+            </div>
+
+            <div class="badges-grid" id="badgesGrid">
+                <!-- Generated by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>ChatGPT Mastery Course</h4>
+                    <p>Learn AI through hands-on practice. No fluff, just results.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="beginner.html">Beginner</a></li>
+                        <li><a href="intermediate.html">Intermediate</a></li>
+                        <li><a href="expert.html">Expert</a></li>
+                        <li><a href="playground.html">Playground</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>About</h4>
+                    <p>Created for anyone who wants to master ChatGPT through practical, hands-on learning.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ChatGPT Mastery Course. Built with passion for learning.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Initialize dashboard functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            initDashboard();
+        });
+    </script>
+</body>
+</html>

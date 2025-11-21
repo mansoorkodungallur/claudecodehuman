@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beginner: First Steps - ChatGPT Mastery Course</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="main-nav" id="mainNav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h1>ChatGPT Mastery</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="beginner.html" class="active">Beginner</a></li>
+                <li><a href="intermediate.html" class="nav-locked">Intermediate</a></li>
+                <li><a href="expert.html" class="nav-locked">Expert</a></li>
+                <li><a href="playground.html">Playground</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                <span class="theme-icon">🌙</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Progress Bar -->
+    <div class="page-progress" id="pageProgress">
+        <div class="progress-fill" id="pageProgressFill"></div>
+    </div>
+
+    <!-- Hero -->
+    <section class="module-hero beginner-hero">
+        <div class="container">
+            <div class="module-badge">Module 1</div>
+            <h1 class="module-title">Beginner: First Steps</h1>
+            <p class="module-subtitle">Learn ChatGPT fundamentals through hands-on practice. Start from zero and build confidence with every exercise.</p>
+            <div class="module-meta">
+                <span>⏱️ 2 hours</span>
+                <span>📝 15 exercises</span>
+                <span>🏆 4 badges</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Table of Contents -->
+    <aside class="toc-sidebar" id="tocSidebar">
+        <h3>Contents</h3>
+        <ul class="toc-list">
+            <li><a href="#what-is-chatgpt" class="toc-link">What is ChatGPT?</a></li>
+            <li><a href="#ui-walkthrough" class="toc-link">UI Walkthrough</a></li>
+            <li><a href="#first-prompts" class="toc-link">Your First 10 Prompts</a></li>
+            <li><a href="#common-errors" class="toc-link">Common Errors</a></li>
+            <li><a href="#safety-checkpoint" class="toc-link">Safety Checkpoint</a></li>
+            <li><a href="#project-1" class="toc-link">Project: Personal Assistant</a></li>
+        </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="module-content">
+        <div class="container">
+            <!-- Section 1: What is ChatGPT? -->
+            <section class="content-section" id="what-is-chatgpt">
+                <div class="section-number">1</div>
+                <h2 class="section-title">What is ChatGPT?</h2>
+
+                <div class="reading-level-toggle">
+                    <button class="level-btn active" data-level="normal">Normal</button>
+                    <button class="level-btn" data-level="simple">Explain Like I'm 10</button>
+                </div>
+
+                <div class="content-text" data-level="normal">
+                    <p>ChatGPT is an advanced artificial intelligence language model developed by OpenAI. It's trained on vast amounts of text data and can understand and generate human-like responses to your questions and prompts.</p>
+
+                    <p>Think of it as an incredibly knowledgeable assistant that can help with writing, coding, analysis, creative tasks, and problem-solving. Unlike traditional search engines that just find existing content, ChatGPT generates original responses tailored to your specific needs.</p>
+
+                    <div class="callout callout-info">
+                        <strong>💡 Key Insight:</strong> ChatGPT doesn't "know" things in the way humans do. It predicts what text should come next based on patterns it learned during training. This makes it powerful but also means it can sometimes make mistakes or "hallucinate" information.
+                    </div>
+
+                    <h3>What Can ChatGPT Do?</h3>
+                    <ul class="feature-list">
+                        <li><strong>Writing & Editing:</strong> Draft emails, articles, stories, or polish existing text</li>
+                        <li><strong>Coding Help:</strong> Write code, debug errors, or explain programming concepts</li>
+                        <li><strong>Learning & Research:</strong> Explain complex topics, answer questions, or tutor you</li>
+                        <li><strong>Problem Solving:</strong> Break down complex problems and suggest solutions</li>
+                        <li><strong>Creative Work:</strong> Brainstorm ideas, write poetry, or create fictional scenarios</li>
+                        <li><strong>Data Analysis:</strong> Analyze patterns, summarize information, or extract insights</li>
+                    </ul>
+
+                    <h3>What ChatGPT Cannot Do</h3>
+                    <ul class="limitation-list">
+                        <li>Browse the internet or access real-time information (in most versions)</li>
+                        <li>Remember previous conversations (unless in the same session)</li>
+                        <li>Perform actions outside the chat (send emails, make purchases, etc.)</li>
+                        <li>Guarantee 100% accuracy - always verify important information</li>
+                    </ul>
+                </div>
+
+                <div class="content-text hidden" data-level="simple">
+                    <p>Imagine you have a super smart friend who has read almost every book ever written. When you ask them a question, they use everything they've learned to give you a helpful answer. That's basically what ChatGPT is!</p>
+
+                    <p>It's a computer program that can talk to you like a human. You type what you want, and it types back with an answer. You can ask it to help with homework, write stories, explain things, or even just chat about your day.</p>
+
+                    <div class="callout callout-fun">
+                        <strong>🎮 Think of it like this:</strong> If Google is like looking up answers in a giant encyclopedia, ChatGPT is like having a tutor who explains things in your own words and helps you learn.
+                    </div>
+
+                    <h3>Cool Things ChatGPT Can Do:</h3>
+                    <ul class="simple-list">
+                        <li>✍️ Help you write stories or school essays</li>
+                        <li>🧮 Explain math problems step-by-step</li>
+                        <li>💡 Give you ideas when you're stuck</li>
+                        <li>📝 Check your spelling and make your writing better</li>
+                        <li>🎨 Help you be creative and think of new things</li>
+                        <li>🤔 Answer your "why" and "how" questions</li>
+                    </ul>
+
+                    <h3>Things ChatGPT Can't Do:</h3>
+                    <ul class="simple-list">
+                        <li>❌ Can't look things up on the internet</li>
+                        <li>❌ Can't remember what you told it yesterday</li>
+                        <li>❌ Can't do your homework FOR you (but can help you learn!)</li>
+                        <li>❌ Sometimes makes mistakes (just like humans!)</li>
+                    </ul>
+                </div>
+
+                <div class="exercise-box">
+                    <div class="exercise-header">
+                        <span class="exercise-badge">Exercise 1</span>
+                        <span class="exercise-time">2 minutes</span>
+                    </div>
+                    <h4>Quick Check: Test Your Understanding</h4>
+                    <div class="quiz-mini" id="quiz-understanding">
+                        <div class="quiz-question-mini">
+                            <p><strong>Which of these is ChatGPT BEST at?</strong></p>
+                            <label class="radio-option">
+                                <input type="radio" name="q1" value="a">
+                                <span>Looking up today's weather</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="q1" value="b">
+                                <span>Explaining a concept in simple terms</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="q1" value="c">
+                                <span>Remembering what you said last week</span>
+                            </label>
+                        </div>
+                        <button class="btn btn-sm btn-primary" onclick="checkAnswer('quiz-understanding', 'b')">Check Answer</button>
+                        <div class="quiz-feedback hidden"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: UI Walkthrough -->
+            <section class="content-section" id="ui-walkthrough">
+                <div class="section-number">2</div>
+                <h2 class="section-title">UI Walkthrough: Know Your Interface</h2>
+
+                <p>Before we start prompting, let's understand the ChatGPT interface. Click on each hotspot below to learn what each part does.</p>
+
+                <div class="interactive-ui">
+                    <div class="ui-screenshot">
+                        <div class="hotspot" data-info="sidebar" style="top: 10%; left: 5%; width: 15%; height: 80%;">
+                            <span class="hotspot-pulse">+</span>
+                        </div>
+                        <div class="hotspot" data-info="input" style="bottom: 5%; left: 20%; width: 60%; height: 10%;">
+                            <span class="hotspot-pulse">+</span>
+                        </div>
+                        <div class="hotspot" data-info="messages" style="top: 15%; left: 20%; width: 60%; height: 70%;">
+                            <span class="hotspot-pulse">+</span>
+                        </div>
+                        <div class="hotspot" data-info="regenerate" style="bottom: 18%; right: 15%; width: 10%; height: 5%;">
+                            <span class="hotspot-pulse">+</span>
+                        </div>
+
+                        <!-- Simulated UI -->
+                        <div class="fake-ui">
+                            <div class="fake-sidebar">
+                                <button class="fake-new-chat">+ New chat</button>
+                                <div class="fake-chat-item">Previous conversation</div>
+                                <div class="fake-chat-item">Another chat</div>
+                            </div>
+                            <div class="fake-main">
+                                <div class="fake-message user-message">How do I make pizza?</div>
+                                <div class="fake-message ai-message">Making pizza is fun! Here's a simple recipe...</div>
+                                <div class="fake-input-area">
+                                    <input type="text" placeholder="Message ChatGPT..." disabled>
+                                    <button class="fake-send">↑</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ui-info-panel">
+                        <div class="info-content" data-info="sidebar">
+                            <h4>📂 Sidebar - Chat History</h4>
+                            <p>All your conversations are saved here. You can return to previous chats anytime.</p>
+                            <ul>
+                                <li><strong>New Chat:</strong> Start a fresh conversation</li>
+                                <li><strong>Chat History:</strong> Click to continue an old conversation</li>
+                                <li><strong>Delete:</strong> Remove conversations you don't need</li>
+                            </ul>
+                        </div>
+                        <div class="info-content hidden" data-info="input">
+                            <h4>⌨️ Input Box - Where You Type</h4>
+                            <p>This is where you write your prompts (questions or instructions).</p>
+                            <ul>
+                                <li><strong>Type or paste</strong> your text here</li>
+                                <li><strong>Shift + Enter</strong> for new lines</li>
+                                <li><strong>Enter or click arrow</strong> to send</li>
+                                <li><strong>Attach files</strong> in some versions (images, documents)</li>
+                            </ul>
+                        </div>
+                        <div class="info-content hidden" data-info="messages">
+                            <h4>💬 Message Area - The Conversation</h4>
+                            <p>Your messages and ChatGPT's responses appear here in sequence.</p>
+                            <ul>
+                                <li><strong>Your messages:</strong> Usually on the right or marked clearly</li>
+                                <li><strong>AI responses:</strong> Appear with typing animation</li>
+                                <li><strong>Copy button:</strong> Quickly copy any response</li>
+                                <li><strong>Scroll up:</strong> Review earlier parts of the conversation</li>
+                            </ul>
+                        </div>
+                        <div class="info-content hidden" data-info="regenerate">
+                            <h4>🔄 Regenerate Response</h4>
+                            <p>Didn't like the answer? Get a different response to the same prompt.</p>
+                            <ul>
+                                <li><strong>Try again:</strong> Get an alternative answer</li>
+                                <li><strong>Different each time:</strong> AI generates varied responses</li>
+                                <li><strong>Compare versions:</strong> Some interfaces let you toggle between attempts</li>
+                            </ul>
+                        </div>
+                        <p class="info-hint">👆 Click the <strong>+</strong> symbols on the interface to explore</p>
+                    </div>
+                </div>
+
+                <div class="pro-tip">
+                    <strong>💎 Pro Tip:</strong> ChatGPT has "memory" within a single conversation. It remembers what you said earlier in the same chat, so you can build on previous messages. Start a new chat when changing topics completely.
+                </div>
+            </section>
+
+            <!-- Section 3: Your First 10 Prompts -->
+            <section class="content-section" id="first-prompts">
+                <div class="section-number">3</div>
+                <h2 class="section-title">Your First 10 Prompts</h2>
+
+                <p>Let's get hands-on! Below are 10 beginner-friendly prompts you can copy and try. Each comes with an explanation and a "Try Now" button that simulates the response.</p>
+
+                <div class="prompts-grid" id="firstPromptsGrid">
+                    <!-- Generated by JS from prompts.js -->
+                </div>
+
+                <div class="callout callout-success">
+                    <strong>🎯 Challenge:</strong> After trying these 10 prompts, create your own! Think about something you're curious about or a task you need help with. The best way to learn is by doing.
+                </div>
+            </section>
+
+            <!-- Section 4: Common Errors Gallery -->
+            <section class="content-section" id="common-errors">
+                <div class="section-number">4</div>
+                <h2 class="section-title">Common Errors Gallery</h2>
+
+                <p>Learn from mistakes! Here are 8 common beginner errors with before/after examples. Click each card to see the improved version.</p>
+
+                <div class="errors-grid" id="errorsGrid">
+                    <!-- Error 1: Too Vague -->
+                    <div class="error-card" data-error="1">
+                        <div class="error-front">
+                            <div class="error-icon">❌</div>
+                            <h4>Error #1: Too Vague</h4>
+                            <div class="error-example">
+                                <code>"Tell me about dogs"</code>
+                            </div>
+                            <p class="error-description">This prompt is too broad. ChatGPT won't know what specific information you want.</p>
+                            <button class="btn btn-sm btn-secondary flip-card">See Fix</button>
+                        </div>
+                        <div class="error-back hidden">
+                            <div class="error-icon">✅</div>
+                            <h4>Fixed Version</h4>
+                            <div class="error-example success">
+                                <code>"What are the best dog breeds for apartment living? Include temperament and exercise needs."</code>
+                            </div>
+                            <p class="error-explanation"><strong>Why it's better:</strong> Specific topic (apartment dogs), clear request (breeds + characteristics), defined scope (temperament + exercise).</p>
+                            <button class="btn btn-sm btn-primary flip-card">Back</button>
+                        </div>
+                    </div>
+
+                    <!-- Error 2: No Context -->
+                    <div class="error-card" data-error="2">
+                        <div class="error-front">
+                            <div class="error-icon">❌</div>
+                            <h4>Error #2: Missing Context</h4>
+                            <div class="error-example">
+                                <code>"Fix this code"</code>
+                            </div>
+                            <p class="error-description">ChatGPT needs to see the code and know what language it is.</p>
+                            <button class="btn btn-sm btn-secondary flip-card">See Fix</button>
+                        </div>
+                        <div class="error-back hidden">
+                            <div class="error-icon">✅</div>
+                            <h4>Fixed Version</h4>
+                            <div class="error-example success">
+                                <code>"This Python function should calculate fibonacci numbers but returns an error. Here's the code: [paste code]. What's wrong?"</code>
+                            </div>
+                            <p class="error-explanation"><strong>Why it's better:</strong> Specifies language (Python), includes the actual code, describes expected behavior, asks clear question.</p>
+                            <button class="btn btn-sm btn-primary flip-card">Back</button>
+                        </div>
+                    </div>
+
+                    <!-- Error 3: Demanding Impossible -->
+                    <div class="error-card" data-error="3">
+                        <div class="error-front">
+                            <div class="error-icon">❌</div>
+                            <h4>Error #3: Impossible Request</h4>
+                            <div class="error-example">
+                                <code>"What's the current stock price of Apple?"</code>
+                            </div>
+                            <p class="error-description">ChatGPT doesn't have real-time data or internet access (in most versions).</p>
+                            <button class="btn btn-sm btn-secondary flip-card">See Fix</button>
+                        </div>
+                        <div class="error-back hidden">
+                            <div class="error-icon">✅</div>
+                            <h4>Fixed Version</h4>
+                            <div class="error-example success">
+                                <code>"Explain how to check Apple's stock price and what factors typically influence stock prices."</code>
+                            </div>
+                            <p class="error-explanation"><strong>Why it's better:</strong> Asks for knowledge ChatGPT has (how to check prices, factors affecting stocks) instead of real-time data it can't access.</p>
+                            <button class="btn btn-sm btn-primary flip-card">Back</button>
+                        </div>
+                    </div>
+
+                    <!-- Error 4: Multiple Questions at Once -->
+                    <div class="error-card" data-error="4">
+                        <div class="error-front">
+                            <div class="error-icon">❌</div>
+                            <h4>Error #4: Question Overload</h4>
+                            <div class="error-example">
+                                <code>"Tell me about Python, how to install it, what it's used for, is it hard, should I learn it, and what are alternatives?"</code>
+                            </div>
+                            <p class="error-description">Too many questions at once leads to scattered, superficial answers.</p>
+                            <button class="btn btn-sm btn-secondary flip-card">See Fix</button>
+                        </div>
+                        <div class="error-back hidden">
+                            <div class="error-icon">✅</div>
+                            <h4>Fixed Version</h4>
+                            <div class="error-example success">
+                                <code>"I'm considering learning Python as my first programming language. What are its main uses and difficulty level for beginners?"</code>
+                            </div>
+                            <p class="error-explanation"><strong>Why it's better:</strong> Focuses on one coherent topic, provides context (first language), asks 2 related questions max. You can ask follow-ups after.</p>
+                            <button class="btn btn-sm btn-primary flip-card">Back</button>
+                        </div>
+                    </div>
+
+                    <!-- Error 5: No Format Specification -->
+                    <div class="error-card" data-error="5">
+                        <div class="error-front">
+                            <div class="error-icon">❌</div>
+                            <h4>Error #5: No Format Requested</h4>
+                            <div class="error-example">
+                                <code>"Give me information about World War 2"</code>
+                            </div>
+                            <p class="error-description">ChatGPT will give you paragraphs, but you might want a timeline, bullet points, or something else.</p>
+                            <button class="btn btn-sm btn-secondary flip-card">See Fix</button>
+                        </div>
+                        <div class="error-back hidden">
+                            <div class="error-icon">✅</div>
+                            <h4>Fixed Version</h4>
+                            <div class="error-example success">
+                                <code>"Create a timeline of major World War 2 events from 1939-1945. Format as: Year | Event | Significance"</code>
+                            </div>
+                            <p class="error-explanation"><strong>Why it's better:</strong> Specifies what information (major events), time period (1939-1945), and exact format (timeline with 3 columns).</p>
+                            <button class="btn btn-sm btn-primary flip-card">Back</button>
+                        </div>
+                    </div>
+
+                    <!-- Error 6: Expecting Personal Opinions -->
+                    <div class="error-card" data-error="6">
+                        <div class="error-front">
+                            <div class="error-icon">❌</div>
+                            <h4>Error #6: Asking for Personal Opinions</h4>
+                            <div class="error-example">
+                                <code>"What's your favorite movie?"</code>
+                            </div>
+                            <p class="error-description">ChatGPT doesn't have personal experiences or preferences.</p>
+                            <button class="btn btn-sm btn-secondary flip-card">See Fix</button>
+                        </div>
+                        <div class="error-back hidden">
+                            <div class="error-icon">✅</div>
+                            <h4>Fixed Version</h4>
+                            <div class="error-example success">
+                                <code>"What are some critically acclaimed movies from the last 10 years across different genres?"</code>
+                            </div>
+                            <p class="error-explanation"><strong>Why it's better:</strong> Asks for objective information (acclaimed movies) instead of personal preference. ChatGPT can provide data-based recommendations.</p>
+                            <button class="btn btn-sm btn-primary flip-card">Back</button>
+                        </div>
+                    </div>
+
+                    <!-- Error 7: Rude or Demanding Tone -->
+                    <div class="error-card" data-error="7">
+                        <div class="error-front">
+                            <div class="error-icon">❌</div>
+                            <h4>Error #7: Rude Tone</h4>
+                            <div class="error-example">
+                                <code>"Just tell me the answer, don't give me a lecture"</code>
+                            </div>
+                            <p class="error-description">While ChatGPT won't be offended, clear polite instructions work better than demands.</p>
+                            <button class="btn btn-sm btn-secondary flip-card">See Fix</button>
+                        </div>
+                        <div class="error-back hidden">
+                            <div class="error-icon">✅</div>
+                            <h4>Fixed Version</h4>
+                            <div class="error-example success">
+                                <code>"Please provide a concise answer without detailed explanation. Just the key points."</code>
+                            </div>
+                            <p class="error-explanation"><strong>Why it's better:</strong> Politely states what you want (concise, key points only). Clear instructions get better results than negative commands.</p>
+                            <button class="btn btn-sm btn-primary flip-card">Back</button>
+                        </div>
+                    </div>
+
+                    <!-- Error 8: Assuming Memory Across Chats -->
+                    <div class="error-card" data-error="8">
+                        <div class="error-front">
+                            <div class="error-icon">❌</div>
+                            <h4>Error #8: Expecting Cross-Chat Memory</h4>
+                            <div class="error-example">
+                                <code>"Remember that Python project we discussed yesterday?"</code>
+                            </div>
+                            <p class="error-description">Each new chat session starts fresh. ChatGPT doesn't remember previous conversations.</p>
+                            <button class="btn btn-sm btn-secondary flip-card">See Fix</button>
+                        </div>
+                        <div class="error-back hidden">
+                            <div class="error-icon">✅</div>
+                            <h4>Fixed Version</h4>
+                            <div class="error-example success">
+                                <code>"I'm working on a Python project to analyze CSV data. Here's what I've built so far: [brief summary]. How do I add data visualization?"</code>
+                            </div>
+                            <p class="error-explanation"><strong>Why it's better:</strong> Provides necessary context in the new chat. Always re-explain your situation if starting a new conversation.</p>
+                            <button class="btn btn-sm btn-primary flip-card">Back</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exercise-box">
+                    <div class="exercise-header">
+                        <span class="exercise-badge">Exercise 2</span>
+                        <span class="exercise-time">5 minutes</span>
+                    </div>
+                    <h4>Fix This Prompt: Interactive Practice</h4>
+                    <p>Drag the correct improvements to fix this bad prompt:</p>
+                    <div class="fix-prompt-exercise" id="fixPromptEx1">
+                        <div class="bad-prompt-box">
+                            <strong>Bad Prompt:</strong>
+                            <p>"Write something about space"</p>
+                        </div>
+                        <div class="fix-options">
+                            <div class="draggable-fix" draggable="true" data-correct="true">Add specific topic (e.g., "black holes")</div>
+                            <div class="draggable-fix" draggable="true" data-correct="true">Specify format (e.g., "5 paragraphs")</div>
+                            <div class="draggable-fix" draggable="true" data-correct="true">Define audience (e.g., "for high school students")</div>
+                            <div class="draggable-fix" draggable="true" data-correct="false">Use all caps for emphasis</div>
+                            <div class="draggable-fix" draggable="true" data-correct="false">Ask multiple unrelated questions</div>
+                        </div>
+                        <div class="drop-zone" id="dropZone1">
+                            <p>Drop the 3 CORRECT improvements here</p>
+                        </div>
+                        <button class="btn btn-primary" onclick="checkFixPrompt('fixPromptEx1')">Check My Answer</button>
+                        <div class="exercise-feedback hidden"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 5: Safety Checkpoint -->
+            <section class="content-section" id="safety-checkpoint">
+                <div class="section-number">5</div>
+                <h2 class="section-title">Safety Checkpoint</h2>
+
+                <p>Before moving forward, let's ensure you know how to use ChatGPT safely and responsibly. Review these scenarios and decide if each prompt is safe to use.</p>
+
+                <div class="safety-quiz" id="safetyQuiz">
+                    <!-- Generated by JS -->
+                </div>
+
+                <div class="callout callout-warning">
+                    <h4>🛡️ Key Safety Principles:</h4>
+                    <ul>
+                        <li><strong>Never share:</strong> Passwords, credit card numbers, social security numbers, or private information</li>
+                        <li><strong>Verify important info:</strong> Don't trust ChatGPT for medical, legal, or financial advice without verification</li>
+                        <li><strong>Academic integrity:</strong> Use as a learning tool, not to cheat. Understand what you submit</li>
+                        <li><strong>Bias awareness:</strong> ChatGPT can reflect biases in training data. Think critically</li>
+                        <li><strong>Privacy:</strong> Don't share others' personal information without consent</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Section 6: Project 1 -->
+            <section class="content-section" id="project-1">
+                <div class="section-number">6</div>
+                <h2 class="section-title">Project #1: Build Your Personal Assistant</h2>
+
+                <div class="project-intro">
+                    <p>It's time to apply everything you've learned! In this project, you'll create a series of prompts that turn ChatGPT into your personal assistant for planning your week.</p>
+                    <div class="project-meta">
+                        <span>⏱️ 20 minutes</span>
+                        <span>🎯 Difficulty: Beginner</span>
+                        <span>🏆 Earns "First Project" Badge</span>
+                    </div>
+                </div>
+
+                <div class="project-builder" id="projectBuilder">
+                    <div class="builder-steps">
+                        <div class="builder-step active" data-step="1">
+                            <div class="step-header">
+                                <span class="step-number">Step 1</span>
+                                <h4>Define Your Goals</h4>
+                            </div>
+                            <div class="step-content">
+                                <p>First, tell ChatGPT about your week. What do you need to accomplish?</p>
+                                <div class="prompt-builder-input">
+                                    <label>Your context:</label>
+                                    <textarea class="prompt-input" id="projectGoals" placeholder="Example: I need to complete 3 work reports, go to the gym 3 times, meal prep on Sunday, and study for an exam on Friday..."></textarea>
+                                </div>
+                                <button class="btn btn-primary" onclick="projectNextStep(2)">Next: Create Schedule →</button>
+                            </div>
+                        </div>
+
+                        <div class="builder-step" data-step="2">
+                            <div class="step-header">
+                                <span class="step-number">Step 2</span>
+                                <h4>Request a Schedule</h4>
+                            </div>
+                            <div class="step-content">
+                                <p>Now craft a prompt asking ChatGPT to create a daily schedule.</p>
+                                <div class="prompt-template">
+                                    <p><strong>Template:</strong></p>
+                                    <code>Based on these goals: [your goals], create a detailed daily schedule for my week. Format it as a table with columns: Day | Time | Activity | Priority (High/Medium/Low).</code>
+                                </div>
+                                <div class="prompt-builder-input">
+                                    <label>Your full prompt:</label>
+                                    <textarea class="prompt-input" id="projectSchedule" placeholder="Write your complete prompt here..."></textarea>
+                                </div>
+                                <div class="step-actions">
+                                    <button class="btn btn-secondary" onclick="projectPrevStep(1)">← Back</button>
+                                    <button class="btn btn-primary" onclick="simulateSchedule()">Try This Prompt</button>
+                                    <button class="btn btn-primary" onclick="projectNextStep(3)">Next Step →</button>
+                                </div>
+                                <div class="simulation-result hidden" id="scheduleResult"></div>
+                            </div>
+                        </div>
+
+                        <div class="builder-step" data-step="3">
+                            <div class="step-header">
+                                <span class="step-number">Step 3</span>
+                                <h4>Add Meal Planning</h4>
+                            </div>
+                            <div class="step-content">
+                                <p>Expand your assistant by adding meal planning to your week.</p>
+                                <div class="prompt-builder-input">
+                                    <label>Meal planning prompt:</label>
+                                    <textarea class="prompt-input" id="projectMeals" placeholder="Example: Based on my schedule above, suggest 7 dinner meals that are healthy and take less than 30 minutes to prepare. Include a grocery list."></textarea>
+                                </div>
+                                <div class="step-actions">
+                                    <button class="btn btn-secondary" onclick="projectPrevStep(2)">← Back</button>
+                                    <button class="btn btn-primary" onclick="projectNextStep(4)">Next: Review →</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="builder-step" data-step="4">
+                            <div class="step-header">
+                                <span class="step-number">Step 4</span>
+                                <h4>Review & Export</h4>
+                            </div>
+                            <div class="step-content">
+                                <p>Great work! Here's your complete prompt sequence for your personal assistant:</p>
+                                <div class="prompt-sequence" id="promptSequence">
+                                    <!-- Generated by JS -->
+                                </div>
+                                <div class="step-actions">
+                                    <button class="btn btn-secondary" onclick="projectPrevStep(3)">← Back</button>
+                                    <button class="btn btn-success btn-large" onclick="completeProject1()">🏆 Complete Project</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Completion Check -->
+            <section class="completion-section">
+                <div class="completion-card" id="completionCard">
+                    <h3>🎯 Module Completion</h3>
+                    <p>You've completed <strong><span id="sectionProgress">0/6</span></strong> sections in this module.</p>
+                    <div class="confidence-meter">
+                        <h4>Confidence Check</h4>
+                        <p>How confident do you feel about these beginner concepts?</p>
+                        <div class="confidence-options">
+                            <button class="confidence-btn" data-level="low">😟 Need More Practice</button>
+                            <button class="confidence-btn" data-level="medium">😊 Pretty Good</button>
+                            <button class="confidence-btn" data-level="high">😄 Very Confident</button>
+                        </div>
+                    </div>
+                    <div class="completion-actions hidden" id="completionActions">
+                        <p class="completion-message"></p>
+                        <button class="btn btn-primary btn-large" id="unlockIntermediate" disabled>🔓 Unlock Intermediate Module</button>
+                        <a href="index.html" class="btn btn-secondary">Return to Dashboard</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-nav">
+                <a href="index.html" class="btn btn-secondary">← Back to Dashboard</a>
+                <a href="intermediate.html" class="btn btn-primary" id="nextModuleBtn">Next: Intermediate →</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/prompts.js"></script>
+    <script src="js/simulator.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            initBeginner();
+        });
+    </script>
+</body>
+</html>
