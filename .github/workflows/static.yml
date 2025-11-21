@@ -3,8 +3,10 @@ name: Deploy static content to Pages
 
 on:
   # Runs on pushes targeting the default branch
-  push:
-    branches: ["claude/update-ui-functionality-01CE21m1Z3YcT41irnNVQE1a"]
+  # Note: Disabled push trigger to prevent deployment from feature branches
+  # Uncomment and update with main branch when ready for automatic deployments
+  # push:
+  #   branches: ["main"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
